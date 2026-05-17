@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "@fontsource/pretendard/400.css";
+@import "@fontsource/pretendard/500.css";
+@import "@fontsource/pretendard/600.css";
+@import "@fontsource/pretendard/700.css";
+
+@theme inline {
+  /* ===== Colors (from DESIGN.md) ===== */
+  --color-primary: #4A8B61;
+  --color-primary-hover: #3D7350;
+  --color-primary-active: #2F5A3F;
+  --color-primary-soft: #E8F1EB;
+  --color-primary-disabled: #C5DACD;
+
+  --color-accent-gold: #C9A96E;
+  --color-accent-gold-soft: #F4ECDC;
+  --color-accent-gold-active: #A88B53;
+
+  --color-ink: #1A1A1A;
+  --color-body: #3F3F3F;
+  --color-muted: #6A6A6A;
+  --color-muted-soft: #929292;
+
+  --color-hairline: #E5E5E5;
+  --color-hairline-soft: #F0F0F0;
+  --color-border-strong: #C1C1C1;
+
+  --color-canvas: #FFFFFF;
+  --color-surface-soft: #FAFAF8;
+  --color-surface-card: #FFFFFF;
+  --color-surface-strong: #F4F2EE;
+  --color-surface-warm: #FBF8F3;
+
+  --color-on-primary: #FFFFFF;
+  --color-on-accent: #FFFFFF;
+  --color-on-dark: #FFFFFF;
+
+  --color-star-rating: #C9A96E;
+  --color-error: #C13515;
+  --color-success: #2F7A4F;
+
+  --color-kakao-yellow: #FEE500;
+  --color-kakao-ink: #191919;
+
+  /* ===== Radius ===== */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  /* ===== Spacing extra ===== */
+  --spacing-section: 80px;
+
+  /* ===== Font ===== */
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+
+  /* ===== Shadow tier (single tier per DESIGN.md) ===== */
+  --shadow-card-float:
+    rgba(0, 0, 0, 0.02) 0 0 0 1px,
+    rgba(0, 0, 0, 0.04) 0 2px 6px 0,
+    rgba(0, 0, 0, 0.1) 0 4px 8px 0;
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #1A1A1A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Tabular numerals utility */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Reusable component classes built from DESIGN.md tokens */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-primary text-on-primary font-semibold rounded-[8px] px-7 h-[52px] text-base transition-colors hover:bg-primary-hover active:bg-primary-active disabled:bg-primary-disabled disabled:cursor-not-allowed;
+  }
+  .btn-gold {
+    @apply inline-flex items-center justify-center bg-accent-gold text-on-accent font-semibold rounded-[8px] px-7 h-[52px] text-base transition-colors hover:bg-accent-gold-active;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center bg-canvas text-ink font-semibold rounded-[8px] px-7 h-[52px] text-base border border-ink transition-colors hover:bg-surface-soft;
+  }
+  .btn-kakao {
+    @apply inline-flex items-center justify-center gap-2 bg-kakao-yellow text-kakao-ink font-semibold rounded-[8px] px-6 h-[52px] text-base transition-opacity hover:opacity-90;
+  }
+  .btn-pill-primary {
+    @apply inline-flex items-center justify-center bg-primary text-on-primary font-semibold rounded-full px-6 py-3 text-sm transition-colors hover:bg-primary-hover;
+  }
+  .card-base {
+    @apply bg-surface-card rounded-[14px] border border-hairline transition-shadow;
+  }
+  .card-base:hover {
+    box-shadow: var(--shadow-card-float);
+  }
+  .trust-badge {
+    @apply inline-flex items-center gap-1 bg-primary-soft text-primary-active text-[11px] font-semibold rounded-full px-3 py-1 tracking-wide;
+  }
+  .signature-badge {
+    @apply inline-flex items-center bg-canvas text-accent-gold-active text-[10px] font-bold rounded-full px-2.5 py-1 border border-accent-gold uppercase tracking-[0.08em];
+  }
+}

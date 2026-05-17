@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_in_Chrome__list_connected_browsers",
+      "mcp__Claude_in_Chrome__select_browser",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__computer",
+      "mcp__Claude_in_Chrome__read_page",
+      "mcp__Claude_in_Chrome__find",
+      "mcp__Claude_in_Chrome__tabs_create_mcp",
+      "PowerShell($key = \"HKCU:\\\\Software\\\\Google\\\\Chrome\\\\NativeMessagingHosts\\\\com.anthropic.claude_browser_extension\"; $val = \\(Get-ItemProperty -Path $key\\).'\\(default\\)'; Write-Output \"Manifest path: $val\"; if \\(Test-Path $val\\) { Write-Output \"=== Manifest content ===\"; Get-Content $val })",
+      "PowerShell($exts = @\\(\"dihbgbndebgnbjfmelmegjepbnkhlgni\",\"fcoeoabgfenejglbffodgkkbkcdhcgfn\",\"dngcpimnedloihjnnfngkgjoidhnaolf\"\\); $profiles = Get-ChildItem \"$env:LOCALAPPDATA\\\\Google\\\\Chrome\\\\User Data\" -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -match \"^\\(Default|Profile \\\\d+\\)$\" }; foreach \\($p in $profiles\\) { foreach \\($id in $exts\\) { $path = Join-Path $p.FullName \"Extensions\\\\$id\"; if \\(Test-Path $path\\) { $versions = Get-ChildItem $path -Directory; foreach \\($v in $versions\\) { $mf = Join-Path $v.FullName \"manifest.json\"; if \\(Test-Path $mf\\) { $m = Get-Content $mf -Raw | ConvertFrom-Json; Write-Output \"Profile: $\\($p.Name\\) | ExtID: $id | Folder: $\\($v.Name\\) | name: $\\($m.name\\) | version: $\\($m.version\\)\" } } } } })",
+      "mcp__Claude_in_Chrome__browser_batch",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "mcp__Claude_in_Chrome__resize_window",
+      "PowerShell(winget install --id GitHub.cli --silent --accept-source-agreements --accept-package-agreements 2>&1)",
+      "PowerShell($env:Path += \";C:\\\\Program Files\\\\GitHub CLI\"; & \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" --version 2>&1 | Select-Object -First 2; & \"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth status 2>&1 | Select-Object -First 8)"
+    ]
+  }
+}
