@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 강남페이스명가 Next.js Prototype
 
-## Getting Started
+30년 경력 강희석 원장의 회귀 관리 브랜드 — 프리미엄 페이스 케어 사이트.
 
-First, run the development server:
+🔗 **Live**: https://facemyunga.vercel.app
+
+## Stack
+
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **Styling**: Tailwind CSS v4 with DESIGN.md tokens
+- **Font**: Pretendard Variable (Korean-optimized)
+- **Animation**: Framer Motion
+- **Icons**: Lucide React
+- **Hosting**: Vercel (auto-deploy from `main`)
+
+## Key Features
+
+- Custom **BeforeAfterSlider** with face-anchor auto-alignment
+  - Specify each image's face center & height → component computes scale + translate
+  - Per-pair zoom multiplier for fine-tuning
+- Mobile-first hero reorder via CSS `contents` + `order-*`
+- Sticky bottom CTA bar (전화 / 카카오톡 / 예약) on mobile
+- Floating KakaoTalk channel button
+- Single-shadow elevation system (DESIGN.md principle)
+- Sage Green primary + Warm Gold signature accent
+
+## Local Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+  app/
+    layout.tsx        # Pretendard + metadata
+    page.tsx          # Home page (all sections)
+    globals.css       # Tailwind v4 + design tokens
+  components/
+    BeforeAfterSlider.tsx   # Client component, face-anchor system
+public/
+  images/
+    custom/           # Owner-provided photos (hero, doctor, treatments)
+    wix/              # Crawled from existing wix.com site
+DESIGN.md             # Airbnb-inspired design system, customized
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploy
 
-## Learn More
+```bash
+git push  # auto-deploys to Vercel on main branch
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with [Claude Code](https://claude.com/claude-code).
