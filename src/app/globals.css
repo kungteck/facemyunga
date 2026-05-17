@@ -78,6 +78,11 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
+  /* Sticky top nav is 72px tall; offset hash-target sections so they
+     land below it when navigated to via #anchor links. */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
   /* Tabular numerals utility */
   .tabular-nums {
     font-variant-numeric: tabular-nums;

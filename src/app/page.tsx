@@ -18,6 +18,7 @@ import {
   BeforeAfterSlider,
   type ImageAdjust,
 } from "@/components/BeforeAfterSlider";
+import { BackToTop } from "@/components/BackToTop";
 
 const NAV_LINKS = [
   { label: "홈", href: "#home" },
@@ -358,23 +359,28 @@ export default function Home() {
               <p className="uppercase text-[10px] tracking-[0.08em] font-bold text-primary mb-3">
                 BRAND STORY
               </p>
-              <h2 className="text-[22px] lg:text-[26px] font-semibold tracking-tight leading-snug">
-                사고로 시작된 30년의 여정,
+              <h2 className="text-[22px] lg:text-[28px] font-semibold tracking-tight leading-snug">
+                한 번의 사고에서 시작된,
                 <br />
-                마법의 손 강희석
+                30년의 길
               </h2>
-              <p className="mt-5 text-body leading-relaxed">
-                35년 전 사고로 인한 통증을 전문 관리로 극복한 경험을 바탕으로,
-                얼굴과 신체의 균형을 되찾는 독자적인 회귀 관리 기법을
-                개발했습니다. 어느새 마법의 손이라는 별명이 생긴 강희석
-                원장이 본연의 예쁜 얼굴을 약속드립니다.
-              </p>
-              <a
-                href="#about"
-                className="mt-7 inline-flex items-center gap-1 text-sm font-medium text-ink hover:text-primary underline underline-offset-4"
-              >
-                브랜드 스토리 자세히 보기 <ChevronRight className="h-4 w-4" />
-              </a>
+              <div className="mt-6 space-y-4 text-body leading-relaxed">
+                <p>
+                  30년 전, 사고로 얻은 허리 통증은 병원 치료로도 잡히지
+                  않았습니다.
+                </p>
+                <p>
+                  우연히 받은 전문 관리 한 번에 통증이 사라지던 날,
+                  강희석 원장은 신체 균형의 원리를 깨달았습니다.
+                  그 원리를 얼굴에 적용해 30년간 다듬어 온 기법이 페이스명가의
+                  <span className="font-semibold text-ink"> 회귀 관리</span>
+                  입니다.
+                </p>
+                <p>
+                  한 분 한 분의 본연의 얼굴 균형을, &lsquo;마법의 손&rsquo;이
+                  다시 찾아 드립니다.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -578,21 +584,13 @@ export default function Home() {
         {/* ============ BEFORE & AFTER PREVIEW ============ */}
         <section id="results" className="py-20 lg:py-[80px] bg-canvas">
           <div className="mx-auto max-w-[1200px] px-5 lg:px-10">
-            <div className="flex items-end justify-between mb-10">
-              <div>
-                <p className="uppercase text-[10px] tracking-[0.08em] font-bold text-primary mb-3">
-                  BEFORE & AFTER
-                </p>
-                <h2 className="text-[22px] lg:text-[26px] font-semibold tracking-tight">
-                  실제 고객 변화 사례
-                </h2>
-              </div>
-              <a
-                href="#results"
-                className="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-ink"
-              >
-                전체 보기 <ChevronRight className="h-4 w-4" />
-              </a>
+            <div className="mb-10">
+              <p className="uppercase text-[10px] tracking-[0.08em] font-bold text-primary mb-3">
+                BEFORE & AFTER
+              </p>
+              <h2 className="text-[22px] lg:text-[26px] font-semibold tracking-tight">
+                실제 고객 변화 사례
+              </h2>
             </div>
             <p className="text-sm text-muted mb-8 -mt-4">
               가운데 손잡이를 좌우로 드래그하여 시술 전후를 비교해보세요.
@@ -853,6 +851,9 @@ export default function Home() {
       >
         <MessageCircle className="h-7 w-7 fill-current" />
       </a>
+
+      {/* ============ BACK TO TOP BUTTON ============ */}
+      <BackToTop />
     </>
   );
 }
