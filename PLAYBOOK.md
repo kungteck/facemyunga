@@ -136,7 +136,12 @@ npx wrangler pages project create <PROJECT> --production-branch=main
 색/타이포/스페이싱/그림자 토큰을 정의. Tailwind v4의 `@theme inline`로
 `globals.css`에 매핑해 `bg-primary` 같은 유틸로 바로 사용.
 
-### 강남페이스명가 기준 톤 (Airbnb 영감)
+> **새 프로젝트에 `DESIGN.md`가 없다면 작업 시작 전에 사용자에게 요청할 것.**
+> 디자인 토큰(메인 색·액센트·타이포·라운드·그림자 등)이 정의돼 있어야 일관된
+> 컴포넌트 작성이 가능하다. 비어 있는 상태로 추측해서 만들면 나중에 전부
+> 다시 손봐야 한다.
+
+### 기준 톤 (강남페이스명가 예시)
 
 - 메인 색: 채도 낮은 톤 1개 (예: Sage Green `#4A8B61`)
 - 액센트: 따뜻한 골드 1개 (예: `#C9A96E`) — "Signature" 강조용
@@ -157,21 +162,14 @@ npx wrangler pages project create <PROJECT> --production-branch=main
 
 ---
 
-## 5. 표준 페이지 구조 (One-pager)
+## 5. 페이지 구조
 
-이 순서가 한국 자영업 대상 가장 잘 먹힘:
+**One-page (단일 페이지)** 가 기본. 모든 컨텐츠를 한 페이지에 섹션으로 쌓고
+앵커 네비(`#about`, `#contact` 등)로 이동한다.
 
-1. **TOP NAV** (sticky) — 로고 / 메뉴 / 전화·CTA / 햄버거(모바일)
-2. **HERO** — 헤드라인 + 부제 + CTA 2개 + 메인 이미지 + 신뢰 뱃지
-3. **BRAND STORY** — 원장/대표 1인칭 내러티브, 포트레이트 이미지
-4. **SELF-CHECK / 자가진단** *(의료·건강 분야 한정)* — YouTube 임베드 + 체크리스트
-5. **TREATMENTS / 서비스 그리드** — 카드 2~4개, 가격·소요시간 명시
-6. **SIGNATURE** — 시그니처 상품 1개 + 5단계 프로세스 + 풀패키지 가격
-7. **BEFORE & AFTER** *(시술/뷰티 한정)* — 드래그 비교 슬라이더
-8. **REVIEWS** — 별점 + 3~6개 후기 카드
-9. **CONTACT** — 주소/시간/전화 + 폼 + 지도
-10. **FOOTER** — 로고, 시술 링크, 연락처, 사업자등록번호
-11. **FIXED OVERLAYS** — 모바일 하단 sticky CTA(전화/카톡/예약), 플로팅 카톡 버튼, BackToTop
+섹션 구성·순서·개수는 업종과 클라이언트 요구에 따라 매번 다름 — 작업
+시작 전에 클라이언트와 협의해서 결정한다. (강남페이스명가 사례는 `src/app/page.tsx`
+참고용으로 남겨둠.)
 
 ---
 
