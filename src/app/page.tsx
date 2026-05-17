@@ -11,6 +11,8 @@ import {
   Clock,
   Award,
   Sparkles,
+  Check,
+  PlayCircle,
 } from "lucide-react";
 import {
   BeforeAfterSlider,
@@ -101,6 +103,18 @@ const BEFORE_AFTER_PAIRS: BAPair[] = [
     afterAdjust: { face: { y: 42, h: 65 } },
   },
 ];
+
+const SELF_CHECK_ITEMS = [
+  "턱이 한쪽으로 틀어져 보이는 경우",
+  "양쪽 광대의 높이와 돌출이 다른 경우",
+  "코가 휘어져 보이고 눈의 크기와 높이가 다른 경우",
+  "턱에서 통증·소리가 나고 주걱턱이 있는 경우",
+  "위 아래 입술과 치아 배열이 안 맞는 경우",
+  "얼굴이 너무 길거나 짧고, 사각지거나 둥글어 보이는 경우",
+  "셀카를 찍으면 좌우 비대칭으로 보이는 경우",
+];
+
+const YT_VIDEO_ID = "qyhy9OWHEug";
 
 const PROCESS_STEPS = [
   {
@@ -361,6 +375,79 @@ export default function Home() {
               >
                 브랜드 스토리 자세히 보기 <ChevronRight className="h-4 w-4" />
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ============ SELF-DIAGNOSIS + YOUTUBE ============ */}
+        <section id="self-check" className="py-20 lg:py-[80px] bg-surface-warm">
+          <div className="mx-auto max-w-[1200px] px-5 lg:px-10">
+            <div className="text-center max-w-[680px] mx-auto mb-12 lg:mb-16">
+              <p className="uppercase text-[10px] tracking-[0.08em] font-bold text-primary mb-3">
+                SELF-DIAGNOSIS
+              </p>
+              <h2 className="text-[22px] lg:text-[28px] font-semibold tracking-tight">
+                이런 고민, 있으세요?
+              </h2>
+              <p className="mt-4 text-body leading-relaxed">
+                강희석 원장이 직접 설명하는 얼굴 비대칭 자가 진단법.
+                <br className="hidden sm:block" />
+                아래 항목 중 하나라도 해당된다면 회귀 관리가 도움이 될 수 있습니다.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-start">
+              {/* Symptom checklist */}
+              <ul className="space-y-2.5">
+                {SELF_CHECK_ITEMS.map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 px-5 py-4 bg-canvas rounded-[14px] border border-hairline transition-colors hover:border-primary"
+                  >
+                    <span className="h-6 w-6 rounded-full bg-primary-soft flex items-center justify-center shrink-0 mt-0.5">
+                      <Check className="h-3.5 w-3.5 text-primary" strokeWidth={3} />
+                    </span>
+                    <span className="text-[15px] leading-relaxed text-ink">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* YouTube video */}
+              <div className="lg:sticky lg:top-[88px]">
+                <div className="aspect-video rounded-[14px] overflow-hidden bg-ink shadow-[var(--shadow-card-float)] border border-hairline">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${YT_VIDEO_ID}?rel=0&modestbranding=1`}
+                    title="얼굴 비대칭 자가 진단법 — 강남페이스명가"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full"
+                  />
+                </div>
+                <div className="mt-5 flex items-start gap-3.5">
+                  <div className="h-11 w-11 rounded-full bg-primary-soft flex items-center justify-center shrink-0">
+                    <PlayCircle className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[15px] font-semibold leading-tight">
+                      얼굴 비대칭 자가 진단법 (Self-diagnosis)
+                    </p>
+                    <p className="text-sm text-muted mt-1">
+                      강남 마법의손 TV · 강희석 원장
+                    </p>
+                  </div>
+                  <a
+                    href={`https://youtu.be/${YT_VIDEO_ID}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden sm:inline-flex items-center gap-1 text-xs font-medium text-muted hover:text-primary shrink-0 mt-1"
+                  >
+                    YouTube에서 보기 <ChevronRight className="h-3 w-3" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>
