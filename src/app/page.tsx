@@ -4,7 +4,6 @@ import {
   Phone,
   MessageCircle,
   Calendar,
-  Menu,
   ChevronRight,
   Star,
   MapPin,
@@ -19,6 +18,7 @@ import {
   type ImageAdjust,
 } from "@/components/BeforeAfterSlider";
 import { BackToTop } from "@/components/BackToTop";
+import { MobileMenu } from "@/components/MobileMenu";
 
 const NAV_LINKS = [
   { label: "홈", href: "#home" },
@@ -205,12 +205,7 @@ export default function Home() {
             <a href="#contact" className="btn-pill-primary hidden sm:inline-flex">
               예약 상담
             </a>
-            <button
-              aria-label="메뉴"
-              className="md:hidden h-10 w-10 inline-flex items-center justify-center rounded-full hover:bg-surface-soft"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
+            <MobileMenu links={NAV_LINKS} />
           </div>
         </div>
       </header>
@@ -360,26 +355,48 @@ export default function Home() {
                 BRAND STORY
               </p>
               <h2 className="text-[22px] lg:text-[28px] font-semibold tracking-tight leading-snug">
-                한 번의 사고에서 시작된,
+                제 손이 만들어지기까지,
                 <br />
-                30년의 길
+                30년이 걸렸습니다.
               </h2>
               <div className="mt-6 space-y-4 text-body leading-relaxed">
                 <p>
-                  30년 전, 사고로 얻은 허리 통증은 병원 치료로도 잡히지
-                  않았습니다.
+                  서른 즈음, 한 번의 사고로 허리를 크게 다쳤습니다. 병원에서는
+                  &ldquo;시간이 약&rdquo;이라고 했지만, 통증은 1년이 지나도
+                  가시지 않았습니다. 앉는 것, 걷는 것, 잠드는 것까지 일상이
+                  무너지던 시기였습니다.
                 </p>
                 <p>
-                  우연히 받은 전문 관리 한 번에 통증이 사라지던 날,
-                  강희석 원장은 신체 균형의 원리를 깨달았습니다.
-                  그 원리를 얼굴에 적용해 30년간 다듬어 온 기법이 페이스명가의
-                  <span className="font-semibold text-ink"> 회귀 관리</span>
-                  입니다.
+                  지인의 소개로 전문 관리를 받기 시작했습니다. 한두 번에
+                  나아질 일이 아니라는 건 저도 알았습니다. 그저 꾸준히
+                  받았습니다. 몇 개월이 지나자, 통증이 조금씩 옅어졌고
+                  반년이 지난 어느 날 문득 깨달았습니다. 일상이 돌아와 있다는
+                  것을.
                 </p>
                 <p>
-                  한 분 한 분의 본연의 얼굴 균형을, &lsquo;마법의 손&rsquo;이
-                  다시 찾아 드립니다.
+                  손이 몸을 바꿀 수 있다는 사실이 저를 사로잡았습니다.
+                  병원도 약도 해내지 못한 일을 사람의 손이 해낸다는 것 —
+                  그 원리를 직접 익히고 싶어 그날부터 공부와 수련을 시작했습니다.
+                  몇 년이 걸렸고, 그 뒤로 다시 몇 년이 걸렸습니다.
                 </p>
+                <p>
+                  몸의 균형이 무너지면 얼굴의 좌우도 흔들립니다. 척추가 틀어진
+                  분은 광대 높이가 다르고, 골반이 기운 분은 턱선이 한쪽으로
+                  쏠립니다. 저는 몸에서 배운 원리를 얼굴에 옮겨 적용하기
+                  시작했습니다. 본연의 얼굴형으로 돌아가려는 힘 — 저는 그것을
+                  <span className="font-semibold text-ink"> 얼굴의 귀소본능</span>
+                  이라 부르고, 그 힘을 깨워 드리는 기법을
+                  <span className="font-semibold text-ink"> 회귀 관리</span>로
+                  정리했습니다.
+                </p>
+                <p>
+                  그렇게 30년이 흘렀고, 1만 명이 넘는 분들이 제 손을
+                  거쳐가셨습니다. &lsquo;마법의 손&rsquo;이라는 별명은
+                  제가 붙인 것이 아니라, 변화를 직접 마주한 손님들이 건네주신
+                  말입니다. 과분한 별명을 지키기 위해 저는 오늘도, 한 분을
+                  마주할 때마다 처음처럼 손을 얹습니다.
+                </p>
+                <p className="pt-2 text-sm text-muted">— 강희석, 페이스명가 원장</p>
               </div>
             </div>
           </div>
