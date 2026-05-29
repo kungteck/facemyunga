@@ -119,3 +119,10 @@
     @apply inline-flex items-center bg-canvas text-accent-gold-active text-[10px] font-bold rounded-full px-2.5 py-1 border border-accent-gold uppercase tracking-[0.08em];
   }
 }
+
+/* 카카오맵 지도퍼가기(roughmap) — 고정 640px 폭을 컨테이너에 맞춰 반응형으로 */
+.root_daum_roughmap,
+.root_daum_roughmap .wrap_map,
+.root_daum_roughmap .wrap_map iframe {
+  width: 100% !important;
+}

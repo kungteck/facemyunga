@@ -20,6 +20,7 @@ import {
 import { BackToTop } from "@/components/BackToTop";
 import { MobileMenu } from "@/components/MobileMenu";
 import { ContactForm } from "@/components/ContactForm";
+import { KakaoMap } from "@/components/KakaoMap";
 
 const NAV_LINKS = [
   { label: "홈", href: "#home" },
@@ -732,8 +733,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="mt-6 aspect-[16/9] rounded-[14px] bg-surface-warm flex items-center justify-center text-sm text-muted">
-                네이버 지도 임베드 영역
+              <div className="mt-6">
+                <KakaoMap />
               </div>
             </div>
 
