@@ -2,15 +2,18 @@
 
 이 폴더(`/public/images/custom/`)에 아래 **정확한 파일명**과 **권장 사양**으로 이미지를 넣어주시면 페이지가 자동으로 적용합니다.
 
+> 현재 페이지(`src/app/page.tsx`)는 아래 파일들을 **`.png`** 확장자로 참조합니다.
+> 다른 확장자(`.jpg` 등)로 주시는 경우 코드의 경로도 함께 바꿔야 하니 알려주세요.
+
 ---
 
 ## 📋 필요한 이미지 4종
 
-### 1️⃣ `hero-model.jpg`
+### 1️⃣ `hero-model.png`
 - **용도**: 메인 배너(히어로) 우측 큰 이미지 카드
 - **종횡비**: **4:5 (세로형)**
 - **권장 해상도**: **1600 × 2000 px** 이상 (최소 1080 × 1350)
-- **포맷**: `.jpg` 또는 `.jpeg` (저용량 권장, 500KB~2MB)
+- **포맷**: `.png` (권장 용량 ~2MB 이하)
 - **콘텐츠 가이드**:
   - 한국 여성 모델, 페이셜 케어/뷰티 포즈
   - 양손이 얼굴 근처에 있는 K-beauty 톤
@@ -18,11 +21,11 @@
   - 자연광 또는 부드러운 스튜디오 조명
 - **노출 영역**: 카드 안에서 `object-cover object-center` — 중앙 위주로 잘림
 
-### 2️⃣ `doctor-portrait.jpg`
+### 2️⃣ `doctor-portrait.png`
 - **용도**: 두 번째 섹션 "BRAND STORY" 좌측 원장님 포트레이트
 - **종횡비**: **4:5 (세로형)**
 - **권장 해상도**: **1500 × 1875 px** 이상
-- **포맷**: `.jpg`
+- **포맷**: `.png`
 - **콘텐츠 가이드**:
   - 강희석 원장님 정면/3:4 정도 각도
   - 흰 가운, 깔끔한 클리닉/스튜디오 배경
@@ -30,11 +33,11 @@
   - 상반신 컷 (어깨~가슴 라인까지)
 - **노출 영역**: `object-cover object-center` — 얼굴 중심 위주
 
-### 3️⃣ `treatment-1-contour.jpg`
+### 3️⃣ `treatment-1-contour.png`
 - **용도**: 시술 카드 1번 "얼굴 윤곽 축소 관리"
 - **종횡비**: **1:1 (정사각)**
 - **권장 해상도**: **1200 × 1200 px** 이상
-- **포맷**: `.jpg`
+- **포맷**: `.png`
 - **콘텐츠 가이드**:
   - **얼굴 윤곽 축소**와 관련된 포즈
   - 예: 3/4 옆모습, 손가락으로 턱선 따라 흐르는 동작
@@ -42,11 +45,11 @@
   - 깨끗한 흰색/크림 배경
 - **노출**: 원형으로 잘려 표시됨 (`rounded-full`) — 정사각 정중앙이 원 안에 들어감
 
-### 4️⃣ `treatment-2-symmetry.jpg`
+### 4️⃣ `treatment-2-symmetry.png`
 - **용도**: 시술 카드 2번 "얼굴 비대칭 관리"
 - **종횡비**: **1:1 (정사각)**
 - **권장 해상도**: **1200 × 1200 px** 이상
-- **포맷**: `.jpg`
+- **포맷**: `.png`
 - **콘텐츠 가이드**:
   - **좌우 대칭 균형**과 관련된 포즈
   - 예: 정면 컷, 양손으로 얼굴을 좌우 대칭으로 감싸기
@@ -59,11 +62,11 @@
 ## 📁 정확한 파일 경로 (Windows)
 
 ```
-C:\work\2_ads\facemyunga\public\images\custom\
-  ├── hero-model.jpg
-  ├── doctor-portrait.jpg
-  ├── treatment-1-contour.jpg
-  └── treatment-2-symmetry.jpg
+C:\work\facemyunga\public\images\custom\
+  ├── hero-model.png
+  ├── doctor-portrait.png
+  ├── treatment-1-contour.png
+  └── treatment-2-symmetry.png
 ```
 
 ---
@@ -82,8 +85,9 @@ C:\work\2_ads\facemyunga\public\images\custom\
 
 - **종횡비 4:5** = 가로:세로 비율이 0.8 (예: 1600 × 2000)
 - **종횡비 1:1** = 정사각 (예: 1200 × 1200)
-- 파일 크기는 가급적 **2MB 이하** (Next.js Image가 자동 최적화하지만 원본이 작을수록 빠름)
-- JPEG 품질은 **85~90%**가 최적 (눈에 띄는 손실 없이 용량 절감)
+- 파일 크기는 가급적 **2MB 이하** (원본이 작을수록 로딩이 빠름)
+- 사진 디테일이 중요하면 PNG, 용량이 더 중요하면 JPEG(품질 85~90%)도 가능 —
+  단 JPEG로 줄 경우 코드의 확장자도 함께 바꿔야 함
 
 ---
 
@@ -91,9 +95,9 @@ C:\work\2_ads\facemyunga\public\images\custom\
 
 향후 페이지 확장 시 필요한 이미지들 (지금 당장은 불필요):
 
-- `clinic-interior.jpg` — 클리닉 인테리어 (About 페이지용)
-- `process-step-1~5.jpg` — 회귀 관리 5단계 일러스트/사진
+- `clinic-interior.png` — 클리닉 인테리어 (About 섹션용)
+- `process-step-1~5.png` — 회귀 관리 5단계 일러스트/사진
 - `before-after-pair-1~10.jpg` — 실제 비포/애프터 사례
-- `sbs-broadcast.jpg` — SBS 출연 장면 캡쳐
+- `sbs-broadcast.png` — SBS 출연 장면 캡쳐
 
-이건 나중에 About/Service 페이지 빌드할 때 다시 안내드릴게요.
+이건 나중에 섹션 확장할 때 다시 안내드릴게요.

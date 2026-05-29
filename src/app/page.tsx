@@ -36,7 +36,7 @@ const TREATMENTS = [
     duration: "40분",
     priceFrom: 50000,
     pkg: { count: 11, price: 500000 },
-    img: "/images/custom/treatment-1-contour.png",
+    img: "/images/custom/treatment-1-contour.webp",
   },
   {
     name: "얼굴 비대칭 관리",
@@ -44,7 +44,7 @@ const TREATMENTS = [
     duration: "50분",
     priceFrom: 80000,
     pkg: { count: 11, price: 800000 },
-    img: "/images/custom/treatment-2-symmetry.png",
+    img: "/images/custom/treatment-2-symmetry.webp",
   },
 ];
 
@@ -67,8 +67,8 @@ type BAPair = {
 const BEFORE_AFTER_PAIRS: BAPair[] = [
   {
     caseLabel: "CASE 01",
-    before: "/images/wix/before-after-1.jpg",
-    after: "/images/wix/before-after-2.jpg",
+    before: "/images/wix/before-after-1.webp",
+    after: "/images/wix/before-after-2.webp",
     // BEFORE: face fills frame, forehead ~22% → chin ~75%
     // AFTER: small face top-third, forehead ~15% → chin ~40%
     // zoom 0.75 makes both faces 25% smaller (less overwhelming) while
@@ -78,8 +78,8 @@ const BEFORE_AFTER_PAIRS: BAPair[] = [
   },
   {
     caseLabel: "CASE 02",
-    before: "/images/wix/before-after-3.jpg",
-    after: "/images/wix/before-after-4.jpg",
+    before: "/images/wix/before-after-3.webp",
+    after: "/images/wix/before-after-4.webp",
     // BEFORE: forehead ~18% → chin ~73%
     beforeAdjust: { face: { y: 45, h: 55 } },
     // AFTER: forehead ~22% → chin ~72%
@@ -87,8 +87,8 @@ const BEFORE_AFTER_PAIRS: BAPair[] = [
   },
   {
     caseLabel: "CASE 03",
-    before: "/images/wix/before-after-5.jpg",
-    after: "/images/wix/before-after-6.jpg",
+    before: "/images/wix/before-after-5.webp",
+    after: "/images/wix/before-after-6.webp",
     // BEFORE male: forehead ~15% → chin ~58%
     beforeAdjust: { face: { y: 36, h: 43 } },
     // AFTER male: forehead ~17% → chin ~63%
@@ -96,8 +96,8 @@ const BEFORE_AFTER_PAIRS: BAPair[] = [
   },
   {
     caseLabel: "CASE 04",
-    before: "/images/wix/before-after-7.jpg",
-    after: "/images/wix/before-after-8.jpg",
+    before: "/images/wix/before-after-7.webp",
+    after: "/images/wix/before-after-8.webp",
     // BEFORE: forehead ~20% → chin ~58% (dress visible below)
     beforeAdjust: { face: { y: 39, h: 38 } },
     // AFTER: very close-up, forehead ~10% → chin ~75%
@@ -231,7 +231,7 @@ export default function Home() {
             <div className="relative order-1 lg:order-2">
               <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-surface-warm shadow-[var(--shadow-card-float)]">
                 <Image
-                  src="/images/custom/hero-model.png"
+                  src="/images/custom/hero-model.webp"
                   alt="페이스 케어 모델"
                   fill
                   priority
@@ -332,7 +332,7 @@ export default function Home() {
               {/* Main portrait card */}
               <div className="aspect-[4/5] bg-gradient-to-b from-surface-warm to-primary-soft/30 rounded-[20px] relative overflow-hidden shadow-[var(--shadow-card-float)]">
                 <Image
-                  src="/images/custom/doctor-portrait.png"
+                  src="/images/custom/doctor-portrait.webp"
                   alt="강희석 원장 포트레이트"
                   fill
                   sizes="(min-width: 1024px) 460px, 90vw"
