@@ -19,6 +19,7 @@ import {
 } from "@/components/BeforeAfterSlider";
 import { BackToTop } from "@/components/BackToTop";
 import { MobileMenu } from "@/components/MobileMenu";
+import { ContactForm } from "@/components/ContactForm";
 
 const NAV_LINKS = [
   { label: "홈", href: "#home" },
@@ -753,24 +754,7 @@ export default function Home() {
               </div>
               <div className="mt-7 pt-6 border-t border-hairline">
                 <p className="text-xs text-muted">간편 문의 폼</p>
-                <form className="mt-3 space-y-3">
-                  <input
-                    placeholder="이름"
-                    className="w-full h-[52px] px-4 rounded-[8px] border border-hairline focus:outline-none focus:border-primary focus:border-2"
-                  />
-                  <input
-                    placeholder="전화번호"
-                    className="w-full h-[52px] px-4 rounded-[8px] border border-hairline focus:outline-none focus:border-primary focus:border-2 tabular-nums"
-                  />
-                  <textarea
-                    placeholder="문의 사항 (선택)"
-                    rows={3}
-                    className="w-full px-4 py-3 rounded-[8px] border border-hairline focus:outline-none focus:border-primary focus:border-2"
-                  />
-                  <button type="button" className="btn-primary w-full">
-                    예약 신청
-                  </button>
-                </form>
+                <ContactForm />
               </div>
             </aside>
           </div>
