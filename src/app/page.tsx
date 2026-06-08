@@ -643,7 +643,7 @@ export default function Home() {
               <h2 className="text-[22px] lg:text-[26px] font-semibold tracking-tight">
                 고객 후기
               </h2>
-              <div className="mt-4 flex items-center justify-center gap-2">
+              <div className="mt-4 flex items-center justify-center">
                 <div className="flex">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <Star
@@ -652,9 +652,6 @@ export default function Home() {
                     />
                   ))}
                 </div>
-                <span className="text-[15px] font-medium">
-                  4.9 <span className="text-muted">/ 200+ 리뷰</span>
-                </span>
               </div>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
