@@ -150,21 +150,21 @@ const PROCESS_STEPS = [
 const REVIEWS = [
   {
     rating: 5,
-    text: "통증 없이 비대칭이 개선됐어요. 셀카 찍을 때 자신감이 생겼어요.",
-    author: "김○○",
-    date: "2025.04",
+    text: "분위기와 서비스가 기대 이상이었고 원장님의 친절함과 숙련도가 느껴졌어요.",
+    author: "padOOOO",
+    date: "2025.12",
   },
   {
     rating: 5,
-    text: "마법의 손이라는 별명이 진짜네요. 한 번에 변화가 보입니다.",
-    author: "이○○",
-    date: "2025.03",
+    text: "근육의 긴장도, 턱관절 사용 습관, 얼굴 라인의 흐름까지 꼼꼼하게 분석해주셔서 관리 전부터 신뢰감이 생겼습니다.",
+    author: "ahjOOOO",
+    date: "2025.12",
   },
   {
     rating: 5,
-    text: "원장님이 직접 1:1로 봐주셔서 안심돼요. 30년 경력 진짜입니다.",
-    author: "박○○",
-    date: "2025.03",
+    text: "과한 변화가 아니라 내 원래 얼굴 윤곽을 최대한 살리는 느낌이라 자연스러워요.",
+    author: "ekqOOOO",
+    date: "2025.11",
   },
 ];
 
@@ -797,11 +797,6 @@ export default function Home() {
                   회귀 관리 시그니처
                 </a>
               </li>
-              <li>
-                <a href="#treatments" className="hover:text-ink">
-                  피부 관리
-                </a>
-              </li>
             </ul>
           </div>
           <div>
@@ -817,7 +812,7 @@ export default function Home() {
         <div className="border-t border-hairline">
           <div className="mx-auto max-w-[1200px] px-5 lg:px-10 py-5 text-xs text-muted flex flex-wrap items-center justify-between gap-2">
             <span>© 2026 강남페이스명가. All rights reserved.</span>
-            <span>사업자등록번호 000-00-00000</span>
+            <span>사업자등록번호 554-31-01102</span>
           </div>
         </div>
       </footer>

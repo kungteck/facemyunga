@@ -126,3 +126,9 @@
 .root_daum_roughmap .wrap_map iframe {
   width: 100% !important;
 }
+/* 지도 하단 정보 카드(kakaomap 로고·주소·전화·길찾기) 숨김 — 지도만 노출.
+   전화가 "-"로 비는 것도 이 카드가 카카오 장소 DB 값을 쓰기 때문이라,
+   카드를 숨기면 함께 해결된다. 연락처는 위 "전화" 카드에 이미 있다. */
+.root_daum_roughmap .cont {
+  display: none !important;
+}
