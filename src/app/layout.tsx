@@ -38,6 +38,13 @@ export const metadata: Metadata = {
     description: "30년 경력 강희석 원장의 회귀 관리",
     images: ["/og-image.png"],
   },
+  // 네이버 서치어드바이저 소유확인 (HTML 태그 방식)
+  verification: {
+    other: {
+      "naver-site-verification":
+        "8a8d1c67104d7c0a343cb8cf10b68aa6f9f1b291",
+    },
+  },
 };
 
 export default function RootLayout({
