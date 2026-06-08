@@ -20,7 +20,7 @@ import {
 import { BackToTop } from "@/components/BackToTop";
 import { MobileMenu } from "@/components/MobileMenu";
 import { ContactForm } from "@/components/ContactForm";
-import { KakaoMap } from "@/components/KakaoMap";
+import { NaverMap } from "@/components/NaverMap";
 
 const NAV_LINKS = [
   { label: "홈", href: "#home" },
@@ -731,7 +731,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="mt-6">
-                <KakaoMap />
+                <NaverMap />
               </div>
             </div>
 
