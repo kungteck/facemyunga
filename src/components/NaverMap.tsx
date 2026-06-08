@@ -22,7 +22,9 @@ import { Navigation } from "lucide-react";
 const NCP_KEY = process.env.NEXT_PUBLIC_NCP_MAP_KEY || "vskowkxd63";
 const ADDRESS = "충청남도 천안시 동남구 대흥동 85";
 const PLACE_NAME = "강남페이스명가";
-const FALLBACK = { lat: 36.8093, lng: 127.1502 };
+// 대흥동85 의 네이버 지오코딩 좌표. geocoder 모듈이 늦게 준비되거나 실패해도
+// 정확한 위치/길찾기 도착지가 되도록 실측값을 fallback 으로 둔다.
+const FALLBACK = { lat: 36.8086901, lng: 127.1484444 };
 const SCRIPT_ID = "naver-maps-sdk";
 
 type Naver = {
