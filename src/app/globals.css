@@ -123,16 +123,3 @@
     @apply inline-flex items-center bg-canvas text-accent-gold-active text-[10px] font-bold rounded-full px-2.5 py-1 border border-accent-gold uppercase tracking-[0.08em];
   }
 }
-
-/* 카카오맵 지도퍼가기(roughmap) — 고정 640px 폭을 컨테이너에 맞춰 반응형으로 */
-.root_daum_roughmap,
-.root_daum_roughmap .wrap_map,
-.root_daum_roughmap .wrap_map iframe {
-  width: 100% !important;
-}
-/* 지도 하단 정보 카드(kakaomap 로고·주소·전화·길찾기) 숨김 — 지도만 노출.
-   전화가 "-"로 비는 것도 이 카드가 카카오 장소 DB 값을 쓰기 때문이라,
-   카드를 숨기면 함께 해결된다. 연락처는 위 "전화" 카드에 이미 있다. */
-.root_daum_roughmap .cont {
-  display: none !important;
-}
