@@ -114,7 +114,9 @@ export function MobileMenu({ links }: Props) {
               041-567-0341
             </a>
             <a
-              href="#kakao"
+              href="https://open.kakao.com/o/sPLmnEyi"
+                target="_blank"
+                rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="btn-kakao w-full"
             >

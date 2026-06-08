@@ -746,7 +746,9 @@ export default function Home() {
                 <a href="tel:041-567-0341" className="btn-primary w-full">
                   <Phone className="h-4 w-4 mr-2" /> 전화로 예약하기
                 </a>
-                <a href="#kakao" className="btn-kakao w-full">
+                <a href="https://open.kakao.com/o/sPLmnEyi"
+              target="_blank"
+              rel="noopener noreferrer" className="btn-kakao w-full">
                   <MessageCircle className="h-4 w-4" /> 카카오톡 상담
                 </a>
               </div>
@@ -824,7 +826,9 @@ export default function Home() {
           전화
         </a>
         <a
-          href="#kakao"
+          href="https://open.kakao.com/o/sPLmnEyi"
+              target="_blank"
+              rel="noopener noreferrer"
           className="flex flex-col items-center justify-center bg-kakao-yellow text-kakao-ink text-xs gap-0.5 font-medium"
         >
           <MessageCircle className="h-5 w-5" />
@@ -841,7 +845,9 @@ export default function Home() {
 
       {/* ============ FLOATING KAKAO BUTTON ============ */}
       <a
-        href="#kakao"
+        href="https://open.kakao.com/o/sPLmnEyi"
+              target="_blank"
+              rel="noopener noreferrer"
         aria-label="카카오톡 상담"
         className="fixed bottom-20 md:bottom-6 right-5 z-40 h-14 w-14 rounded-full bg-kakao-yellow text-kakao-ink shadow-[var(--shadow-card-float)] flex items-center justify-center hover:scale-105 transition-transform"
       >
