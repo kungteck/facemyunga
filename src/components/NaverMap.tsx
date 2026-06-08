@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Navigation } from "lucide-react";
 
 /**
  * 네이버 지도 (NAVER Maps API v3 / NCP Web Dynamic Map).
@@ -14,9 +15,13 @@ import { useEffect, useRef } from "react";
  *
  * 위치는 주소를 geocoder submodule 로 좌표 변환해 구한다(좌표 하드코딩 불필요).
  * 지오코딩 실패 시 fallback 좌표(천안 대흥동 근사값)로 표시.
+ *
+ * 지도 아래 "네이버 지도 길찾기" 버튼: 얻은 도착지 좌표로 네이버 지도 길찾기
+ *   페이지를 새 탭에 연다(출발지는 사용자가 지정).
  */
 const NCP_KEY = process.env.NEXT_PUBLIC_NCP_MAP_KEY || "vskowkxd63";
 const ADDRESS = "충청남도 천안시 동남구 대흥동 85";
+const PLACE_NAME = "강남페이스명가";
 const FALLBACK = { lat: 36.8093, lng: 127.1502 };
 const SCRIPT_ID = "naver-maps-sdk";
 
@@ -40,6 +45,7 @@ type Naver = {
 
 export function NaverMap() {
   const ref = useRef<HTMLDivElement>(null);
+  const [coord, setCoord] = useState<{ lat: number; lng: number } | null>(null);
 
   useEffect(() => {
     if (!NCP_KEY) return;
@@ -55,6 +61,7 @@ export function NaverMap() {
         const center = new naver.maps.LatLng(lat, lng);
         const map = new naver.maps.Map(ref.current, { center, zoom: 16 });
         new naver.maps.Marker({ position: center, map });
+        setCoord({ lat, lng });
       };
 
       const geo = naver.maps.Service;
@@ -90,10 +97,29 @@ export function NaverMap() {
     };
   }, []);
 
+  // 네이버 지도 길찾기 URL: 출발지는 "-"(미지정), 도착지는 좌표+장소명
+  const directionsUrl = coord
+    ? `https://map.naver.com/p/directions/-/${coord.lng},${coord.lat},${encodeURIComponent(
+        PLACE_NAME
+      )},,/-/transit`
+    : null;
+
   return (
-    <div
-      ref={ref}
-      className="w-full h-[360px] rounded-[14px] border border-hairline overflow-hidden bg-surface-soft"
-    />
+    <div>
+      <div
+        ref={ref}
+        className="w-full h-[360px] rounded-[14px] border border-hairline overflow-hidden bg-surface-soft"
+      />
+      {directionsUrl && (
+        <a
+          href={directionsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-2.5 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary-hover transition-colors"
+        >
+          <Navigation className="h-4 w-4" /> 네이버 지도 길찾기
+        </a>
+      )}
+    </div>
   );
 }
