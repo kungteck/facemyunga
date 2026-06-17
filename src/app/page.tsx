@@ -21,6 +21,7 @@ import { BackToTop } from "@/components/BackToTop";
 import { MobileMenu } from "@/components/MobileMenu";
 import { ContactForm } from "@/components/ContactForm";
 import { NaverMap } from "@/components/NaverMap";
+import { PromoModal } from "@/components/PromoModal";
 
 const NAV_LINKS = [
   { label: "홈", href: "#home" },
@@ -173,6 +174,8 @@ const KRW = (n: number) => `${n.toLocaleString("ko-KR")}원`;
 export default function Home() {
   return (
     <>
+      <PromoModal />
+
       {/* ============ TOP NAV ============ */}
       <header className="sticky top-0 z-40 bg-canvas/95 backdrop-blur border-b border-hairline">
         <div className="mx-auto max-w-[1200px] px-5 lg:px-10 h-[72px] flex items-center justify-between">
