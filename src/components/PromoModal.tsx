@@ -11,8 +11,10 @@ import { X, Sparkles } from "lucide-react";
  *   만료시각(ms)을 저장, 그 시각 전이면 다시 뜨지 않는다(날짜가 바뀌면 재노출).
  * - X / 배경 / ESC 로 닫힘. createPortal 로 body 에 렌더해 헤더 스택을 회피한다.
  * - CTA "지금 예약 상담받기" → #contact(예약/연락 섹션)로 이동하며 팝업을 닫는다.
- * - 본문은 flex-1 + justify-center 라, 내용 합 < 카드 높이일 때 위아래 여백이
- *   자동으로 균등 분배된다(답답하지 않게 카드 대비 내용을 컴팩트하게 유지).
+ * - 본문은 flex-1 + justify-center 라 내용 합 < 카드 높이일 때 위아래 여백이
+ *   자동 균등 분배된다. 카드는 정사각(aspect-square)이라 화면이 좁은 모바일에서는
+ *   카드도 작아지므로, 폰트·여백을 모바일에서 줄이고 sm(≥640px)에서 키워
+ *   모바일·데스크톱 양쪽 모두 상하 여백이 남도록 한다.
  */
 const STORAGE_KEY = "facemyunga.promo.hideUntil";
 
@@ -81,32 +83,32 @@ export function PromoModal() {
           type="button"
           aria-label="팝업 닫기"
           onClick={close}
-          className="absolute right-4 top-4 z-20 inline-flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-black/5 hover:text-ink"
+          className="absolute right-3.5 top-3.5 z-20 inline-flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:bg-black/5 hover:text-ink"
         >
           <X className="h-5 w-5" />
         </button>
 
         {/* 본문 (flex-1 + justify-center 로 위아래 여백 자동 확보) */}
-        <div className="flex flex-1 flex-col items-center justify-center px-8 text-center">
-          <span className="inline-flex items-center gap-1 rounded-full bg-accent-gold px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-on-accent shadow">
+        <div className="flex flex-1 flex-col items-center justify-center px-6 text-center sm:px-8">
+          <span className="inline-flex items-center gap-1 rounded-full bg-accent-gold px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-on-accent shadow sm:text-[11px]">
             <Sparkles className="h-3.5 w-3.5" /> First Visit
           </span>
 
-          <p className="mt-3 text-[14px] font-semibold tracking-wide text-muted">
+          <p className="mt-2.5 text-[13px] font-semibold tracking-wide text-muted sm:mt-3 sm:text-[14px]">
             강남페이스명가 첫 방문 고객님께
           </p>
 
-          <p className="mt-2.5 text-[23px] font-bold leading-none tracking-tight text-ink">
+          <p className="mt-1.5 text-[19px] font-bold leading-none tracking-tight text-ink sm:mt-2.5 sm:text-[23px]">
             첫 방문
           </p>
-          <p className="mt-1 text-[72px] font-extrabold leading-[0.9] tracking-tighter text-primary">
-            50<span className="align-top text-[42px] font-bold">%</span>
+          <p className="mt-0.5 text-[56px] font-extrabold leading-[0.9] tracking-tighter text-primary sm:mt-1 sm:text-[72px]">
+            50<span className="align-top text-[33px] font-bold sm:text-[42px]">%</span>
           </p>
-          <p className="mt-1 text-[21px] font-bold tracking-tight text-accent-gold-active">
+          <p className="mt-0.5 text-[17px] font-bold tracking-tight text-accent-gold-active sm:mt-1 sm:text-[21px]">
             할인 이벤트
           </p>
 
-          <p className="mt-3.5 text-[13.5px] leading-relaxed text-body">
+          <p className="mt-2.5 text-[12.5px] leading-relaxed text-body sm:mt-3.5 sm:text-[13.5px]">
             30년 경력 강희석 원장의 1:1 회귀 관리,
             <br />
             지금 예약하시면 <b className="text-accent-gold-active">반값</b>{" "}
@@ -116,14 +118,14 @@ export function PromoModal() {
           <a
             href="#contact"
             onClick={close}
-            className="btn-primary mt-5 w-full max-w-[260px]"
+            className="btn-primary mt-3.5 h-[46px] w-full max-w-[260px] sm:mt-5 sm:h-[52px]"
           >
             지금 예약 상담받기
           </a>
         </div>
 
         {/* 푸터: 오늘 하루 보지 않기 / 닫기 */}
-        <div className="flex items-center justify-between border-t border-hairline/70 px-6 py-3">
+        <div className="flex items-center justify-between border-t border-hairline/70 px-6 py-2.5 sm:py-3">
           <label className="flex cursor-pointer select-none items-center gap-2 text-[13px] text-muted">
             <input
               type="checkbox"
