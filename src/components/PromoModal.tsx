@@ -115,7 +115,15 @@ export function PromoModal() {
           <p className="mt-2.5 text-[12.5px] leading-relaxed text-body sm:mt-3.5 sm:text-[13.5px]">
             {promo.body.split("\n").map((line, i, arr) => (
               <span key={i}>
-                {line}
+                {line.split(/(\*\*[^*]+\*\*)/g).map((part, j) =>
+                  part.startsWith("**") && part.endsWith("**") ? (
+                    <b key={j} className="text-accent-gold-active">
+                      {part.slice(2, -2)}
+                    </b>
+                  ) : (
+                    part
+                  ),
+                )}
                 {i < arr.length - 1 && <br />}
               </span>
             ))}

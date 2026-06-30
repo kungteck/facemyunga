@@ -264,6 +264,10 @@ export default function AdminPage() {
           <Field label="섹션 설명" value={treatments.desc} onChange={(v) => update((d) => { d.treatments.desc = v; })} />
           {treatments.items.map((t, i) => (
             <div key={i} className="rounded-[12px] border border-hairline p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-muted">시술 {i + 1}</span>
+                <button type="button" onClick={() => update((d) => { d.treatments.items.splice(i, 1); })} className="text-xs text-error hover:underline">삭제</button>
+              </div>
               <ImageField label="시술 사진" value={t.img} onChange={(v) => update((d) => { d.treatments.items[i].img = v; })} />
               <Field label="시술명" value={t.name} onChange={(v) => update((d) => { d.treatments.items[i].name = v; })} />
               <Field label="설명" value={t.desc} onChange={(v) => update((d) => { d.treatments.items[i].desc = v; })} />
@@ -275,6 +279,7 @@ export default function AdminPage() {
               </div>
             </div>
           ))}
+          <button type="button" onClick={() => update((d) => { d.treatments.items.push({ name: "", desc: "", duration: "", priceFrom: 0, pkgCount: 0, pkgPrice: 0, img: "" }); })} className="btn-secondary h-10 text-sm w-full">+ 시술 추가</button>
         </Section>
 
         {/* 시그니처 */}
@@ -309,6 +314,10 @@ export default function AdminPage() {
           <Field label="섹션 설명" value={beforeAfter.desc} onChange={(v) => update((d) => { d.beforeAfter.desc = v; })} />
           {beforeAfter.pairs.map((p, i) => (
             <div key={i} className="rounded-[12px] border border-hairline p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-medium text-muted">사례 {i + 1}</span>
+                <button type="button" onClick={() => update((d) => { d.beforeAfter.pairs.splice(i, 1); })} className="text-xs text-error hover:underline">삭제</button>
+              </div>
               <Field label="케이스 라벨" value={p.caseLabel} onChange={(v) => update((d) => { d.beforeAfter.pairs[i].caseLabel = v; })} />
               <div className="grid grid-cols-2 gap-3">
                 <ImageField label="Before (왼쪽)" value={p.before} onChange={(v) => update((d) => { d.beforeAfter.pairs[i].before = v; })} />
@@ -319,12 +328,15 @@ export default function AdminPage() {
                 <div className="grid grid-cols-2 gap-3 mt-3">
                   <NumField label="Before 세로위치(y)" value={p.beforeAdjust.face.y} onChange={(v) => update((d) => { d.beforeAfter.pairs[i].beforeAdjust.face.y = v; })} />
                   <NumField label="Before 얼굴크기(h)" value={p.beforeAdjust.face.h} onChange={(v) => update((d) => { d.beforeAfter.pairs[i].beforeAdjust.face.h = v; })} />
+                  <NumField label="Before 확대(zoom)" step={0.05} value={faceZoom(p.beforeAdjust)} onChange={(v) => update((d) => { setFaceZoom(d.beforeAfter.pairs[i].beforeAdjust, v); })} />
                   <NumField label="After 세로위치(y)" value={p.afterAdjust.face.y} onChange={(v) => update((d) => { d.beforeAfter.pairs[i].afterAdjust.face.y = v; })} />
                   <NumField label="After 얼굴크기(h)" value={p.afterAdjust.face.h} onChange={(v) => update((d) => { d.beforeAfter.pairs[i].afterAdjust.face.h = v; })} />
+                  <NumField label="After 확대(zoom)" step={0.05} value={faceZoom(p.afterAdjust)} onChange={(v) => update((d) => { setFaceZoom(d.beforeAfter.pairs[i].afterAdjust, v); })} />
                 </div>
               </details>
             </div>
           ))}
+          <button type="button" onClick={() => update((d) => { d.beforeAfter.pairs.push({ caseLabel: "CASE", before: "", after: "", beforeAdjust: { face: { y: 45, h: 65 } }, afterAdjust: { face: { y: 45, h: 65 } } }); })} className="btn-secondary h-10 text-sm w-full">+ 사례 추가</button>
         </Section>
 
         {/* 갤러리 */}
@@ -377,7 +389,7 @@ export default function AdminPage() {
             <Field label="제목 (위)" value={promo.headlineTop} onChange={(v) => update((d) => { d.promo.headlineTop = v; })} />
             <Field label="제목 (아래)" value={promo.headlineBottom} onChange={(v) => update((d) => { d.promo.headlineBottom = v; })} />
           </div>
-          <Field label="안내 문구" multiline value={promo.body} onChange={(v) => update((d) => { d.promo.body = v; })} />
+          <Field label="안내 문구 (**별표**로 감싼 단어는 굵게 강조)" multiline value={promo.body} onChange={(v) => update((d) => { d.promo.body = v; })} />
           <Field label="버튼 문구" value={promo.cta} onChange={(v) => update((d) => { d.promo.cta = v; })} />
         </Section>
       </div>
@@ -434,16 +446,19 @@ function NumField({
   label,
   value,
   onChange,
+  step,
 }: {
   label: string;
   value: number;
   onChange: (v: number) => void;
+  step?: number;
 }) {
   return (
     <label className="block">
       <span className="block text-sm font-medium mb-1.5">{label}</span>
       <input
         type="number"
+        step={step}
         value={Number.isFinite(value) ? value : 0}
         onChange={(e) => {
           const n = Number(e.target.value);
@@ -453,6 +468,15 @@ function NumField({
       />
     </label>
   );
+}
+
+// 전후 face.zoom(선택 필드) 안전 읽기/쓰기 — 일부 사례엔 zoom 키가 없을 수 있어
+// ?? 1 로 읽고, 쓸 때 생성한다. BeforeAfterSlider 도 zoom 미지정 시 1로 동작.
+function faceZoom(adjust: { face: { zoom?: number } }): number {
+  return adjust.face.zoom ?? 1;
+}
+function setFaceZoom(adjust: { face: { zoom?: number } }, v: number) {
+  adjust.face.zoom = v;
 }
 
 function ArrayField({
