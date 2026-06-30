@@ -13,8 +13,10 @@ export type YtVideo = { id: string; title: string; channel: string };
 export function VideoCarousel({ videos }: { videos: YtVideo[] }) {
   const [idx, setIdx] = useState(0);
   const n = videos.length;
-  const v = videos[idx];
   const go = (d: number) => setIdx((idx + d + n) % n);
+
+  if (!n) return null; // 영상이 0개면 렌더하지 않음(빈 배열 접근 크래시 방지)
+  const v = videos[idx] ?? videos[0];
 
   return (
     <div className="lg:sticky lg:top-[88px]">

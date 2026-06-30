@@ -3,20 +3,20 @@
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { X, Sparkles } from "lucide-react";
+import site from "@/content/site.json";
 
 /**
- * 첫 방문 50% 할인 이벤트 팝업 (정사각형, 이미지 없음).
+ * 첫 방문 할인 이벤트 팝업 (정사각형, 이미지 없음).
+ * - 문구·할인율·노출여부(enabled)는 src/content/site.json 의 promo 에서 읽는다
+ *   → 어드민에서 수정하면 자동 반영. promo.enabled=false 면 렌더하지 않는다.
  * - 진입 직후(첫 페인트 뒤) 자동 노출.
  * - "오늘 하루 보지 않기" 체크 후 닫으면 localStorage 에 오늘 자정까지의
  *   만료시각(ms)을 저장, 그 시각 전이면 다시 뜨지 않는다(날짜가 바뀌면 재노출).
  * - X / 배경 / ESC 로 닫힘. createPortal 로 body 에 렌더해 헤더 스택을 회피한다.
- * - CTA "지금 예약 상담받기" → #contact(예약/연락 섹션)로 이동하며 팝업을 닫는다.
- * - 본문은 flex-1 + justify-center 라 내용 합 < 카드 높이일 때 위아래 여백이
- *   자동 균등 분배된다. 카드는 정사각(aspect-square)이라 화면이 좁은 모바일에서는
- *   카드도 작아지므로, 폰트·여백을 모바일에서 줄이고 sm(≥640px)에서 키워
- *   모바일·데스크톱 양쪽 모두 상하 여백이 남도록 한다.
+ * - CTA → #contact(예약/연락 섹션)로 이동하며 팝업을 닫는다.
  */
 const STORAGE_KEY = "facemyunga.promo.hideUntil";
+const { promo } = site;
 
 export function PromoModal() {
   const [mounted, setMounted] = useState(false);
@@ -59,14 +59,15 @@ export function PromoModal() {
     };
   }, [open, close]);
 
-  if (!mounted || !open) return null;
+  // promo.enabled 가 꺼져 있으면 노출하지 않는다(어드민 "팝업 켜기" 반영)
+  if (!mounted || !open || !promo.enabled) return null;
 
   return createPortal(
     <div
       className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6"
       role="dialog"
       aria-modal="true"
-      aria-label="첫 방문 50% 할인 이벤트"
+      aria-label={`${promo.headlineTop} ${promo.discount}% ${promo.headlineBottom}`}
     >
       {/* Backdrop */}
       <button
@@ -91,28 +92,33 @@ export function PromoModal() {
         {/* 본문 (flex-1 + justify-center 로 위아래 여백 자동 확보) */}
         <div className="flex flex-1 flex-col items-center justify-center px-6 text-center sm:px-8">
           <span className="inline-flex items-center gap-1 rounded-full bg-accent-gold px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-on-accent shadow sm:text-[11px]">
-            <Sparkles className="h-3.5 w-3.5" /> First Visit
+            <Sparkles className="h-3.5 w-3.5" /> {promo.badge}
           </span>
 
           <p className="mt-2.5 text-[13px] font-semibold tracking-wide text-muted sm:mt-3 sm:text-[14px]">
-            강남페이스명가 첫 방문 고객님께
+            {promo.lead}
           </p>
 
           <p className="mt-1.5 text-[19px] font-bold leading-none tracking-tight text-ink sm:mt-2.5 sm:text-[23px]">
-            첫 방문
+            {promo.headlineTop}
           </p>
           <p className="mt-0.5 text-[56px] font-extrabold leading-[0.9] tracking-tighter text-primary sm:mt-1 sm:text-[72px]">
-            50<span className="align-top text-[33px] font-bold sm:text-[42px]">%</span>
+            {promo.discount}
+            <span className="align-top text-[33px] font-bold sm:text-[42px]">
+              %
+            </span>
           </p>
           <p className="mt-0.5 text-[17px] font-bold tracking-tight text-accent-gold-active sm:mt-1 sm:text-[21px]">
-            할인 이벤트
+            {promo.headlineBottom}
           </p>
 
           <p className="mt-2.5 text-[12.5px] leading-relaxed text-body sm:mt-3.5 sm:text-[13.5px]">
-            30년 경력 강희석 원장의 1:1 회귀 관리,
-            <br />
-            지금 예약하시면 <b className="text-accent-gold-active">반값</b>{" "}
-            혜택을 드립니다.
+            {promo.body.split("\n").map((line, i, arr) => (
+              <span key={i}>
+                {line}
+                {i < arr.length - 1 && <br />}
+              </span>
+            ))}
           </p>
 
           <a
@@ -120,7 +126,7 @@ export function PromoModal() {
             onClick={close}
             className="btn-primary mt-3.5 h-[46px] w-full max-w-[260px] sm:mt-5 sm:h-[52px]"
           >
-            지금 예약 상담받기
+            {promo.cta}
           </a>
         </div>
 

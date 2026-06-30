@@ -444,8 +444,11 @@ function NumField({
       <span className="block text-sm font-medium mb-1.5">{label}</span>
       <input
         type="number"
-        value={value}
-        onChange={(e) => onChange(Number(e.target.value))}
+        value={Number.isFinite(value) ? value : 0}
+        onChange={(e) => {
+          const n = Number(e.target.value);
+          onChange(Number.isFinite(n) ? n : 0);
+        }}
         className="w-full h-12 rounded-[10px] border border-hairline px-4 focus:border-primary outline-none transition-colors tabular-nums"
       />
     </label>

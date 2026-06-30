@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Menu, X, Phone, Calendar, MessageCircle } from "lucide-react";
+import site from "@/content/site.json";
 
 interface NavLink {
   label: string;
@@ -12,6 +13,8 @@ interface NavLink {
 interface Props {
   links: NavLink[];
 }
+
+const { contact } = site;
 
 /**
  * Mobile hamburger menu — slides in from the right with a backdrop.
@@ -106,15 +109,15 @@ export function MobileMenu({ links }: Props) {
 
           <div className="mt-5 pt-5 border-t border-hairline px-1 space-y-2.5">
             <a
-              href="tel:041-567-0341"
+              href={`tel:${contact.phone1}`}
               onClick={() => setOpen(false)}
               className="flex items-center gap-3 px-4 py-3 text-[15px] text-body rounded-[10px] hover:bg-surface-soft transition-colors tabular-nums"
             >
               <Phone className="h-4 w-4 text-primary" />
-              041-567-0341
+              {contact.phone1}
             </a>
             <a
-              href="https://open.kakao.com/o/sPLmnEyi"
+              href={contact.kakaoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               onClick={() => setOpen(false)}
@@ -133,9 +136,9 @@ export function MobileMenu({ links }: Props) {
         </nav>
 
         <div className="px-5 py-4 border-t border-hairline text-xs text-muted">
-          매일 10:00 – 20:00
+          {contact.hours}
           <br />
-          충청남도 천안시 동남구 대흥동85
+          {contact.addressFull}
         </div>
       </aside>
     </div>
