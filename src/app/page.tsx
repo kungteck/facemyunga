@@ -4,14 +4,12 @@ import {
   Phone,
   MessageCircle,
   Calendar,
-  ChevronRight,
   Star,
   MapPin,
   Clock,
   Award,
   Sparkles,
   Check,
-  PlayCircle,
 } from "lucide-react";
 import {
   BeforeAfterSlider,
@@ -22,7 +20,10 @@ import { MobileMenu } from "@/components/MobileMenu";
 import { ContactForm } from "@/components/ContactForm";
 import { NaverMap } from "@/components/NaverMap";
 import { PromoModal } from "@/components/PromoModal";
+import { VideoCarousel } from "@/components/VideoCarousel";
+import site from "@/content/site.json";
 
+// 네비게이션은 섹션 id 매핑이라 콘텐츠가 아닌 코드에 고정.
 const NAV_LINKS = [
   { label: "홈", href: "#home" },
   { label: "소개", href: "#about" },
@@ -32,144 +33,32 @@ const NAV_LINKS = [
   { label: "연락", href: "#contact" },
 ];
 
-const TREATMENTS = [
-  {
-    name: "얼굴 윤곽 축소 관리",
-    desc: "노폐물 분해로 슬림하고 선명한 얼굴 라인을 만들어 드립니다.",
-    duration: "40분",
-    priceFrom: 50000,
-    pkg: { count: 11, price: 500000 },
-    img: "/images/custom/treatment-1-contour.webp",
-  },
-  {
-    name: "얼굴 비대칭 관리",
-    desc: "본연의 좌우 균형을 되찾는 1:1 맞춤 케어입니다.",
-    duration: "50분",
-    priceFrom: 80000,
-    pkg: { count: 11, price: 800000 },
-    img: "/images/custom/treatment-2-symmetry.webp",
-  },
-];
-
-type BAPair = {
-  caseLabel: string;
-  before: string;
-  after: string;
-  /** Calibration to make faces align between before and after */
-  beforeAdjust?: ImageAdjust;
-  afterAdjust?: ImageAdjust;
-};
-
-// Each image specifies where the face is located in the original photo
-// (face center Y in % of image height, face height = forehead-to-chin in
-// % of image height). The component auto-computes scale + translate so
-// every face lands at the same spot in the container with the same size.
-// Face anchor measurements: y = vertical center of face in % of image height
-// (between forehead and chin tip), h = face height (forehead-to-chin) in %.
-// Measured by viewing each raw image and identifying forehead start + chin tip.
-const BEFORE_AFTER_PAIRS: BAPair[] = [
-  {
-    caseLabel: "CASE 01",
-    before: "/images/wix/before-after-1.webp",
-    after: "/images/wix/before-after-2.webp",
-    // BEFORE: face fills frame, forehead ~22% → chin ~75%
-    // AFTER: small face top-third, forehead ~15% → chin ~40%
-    // zoom 0.75 makes both faces 25% smaller (less overwhelming) while
-    // keeping them perfectly aligned to each other
-    beforeAdjust: { face: { y: 48, h: 53, zoom: 0.75 } },
-    afterAdjust: { face: { y: 27, h: 25, zoom: 0.68 } },
-  },
-  {
-    caseLabel: "CASE 02",
-    before: "/images/wix/before-after-3.webp",
-    after: "/images/wix/before-after-4.webp",
-    // BEFORE: forehead ~18% → chin ~73%
-    beforeAdjust: { face: { y: 45, h: 55 } },
-    // AFTER: forehead ~22% → chin ~72%
-    afterAdjust: { face: { y: 47, h: 50 } },
-  },
-  {
-    caseLabel: "CASE 03",
-    before: "/images/wix/before-after-5.webp",
-    after: "/images/wix/before-after-6.webp",
-    // BEFORE male: forehead ~15% → chin ~58%
-    beforeAdjust: { face: { y: 36, h: 43 } },
-    // AFTER male: forehead ~17% → chin ~63%
-    afterAdjust: { face: { y: 40, h: 46 } },
-  },
-  {
-    caseLabel: "CASE 04",
-    before: "/images/wix/before-after-7.webp",
-    after: "/images/wix/before-after-8.webp",
-    // BEFORE: forehead ~20% → chin ~58% (dress visible below)
-    beforeAdjust: { face: { y: 39, h: 38 } },
-    // AFTER: very close-up, forehead ~10% → chin ~75%
-    afterAdjust: { face: { y: 42, h: 65 } },
-  },
-];
-
-const SELF_CHECK_ITEMS = [
-  "턱이 한쪽으로 틀어져 보이는 경우",
-  "양쪽 광대의 높이와 돌출이 다른 경우",
-  "코가 휘어져 보이고 눈의 크기와 높이가 다른 경우",
-  "턱에서 통증·소리가 나고 주걱턱이 있는 경우",
-  "위 아래 입술과 치아 배열이 안 맞는 경우",
-  "얼굴이 너무 길거나 짧고, 사각지거나 둥글어 보이는 경우",
-  "셀카를 찍으면 좌우 비대칭으로 보이는 경우",
-];
-
-const YT_VIDEO_ID = "qyhy9OWHEug";
-
-const PROCESS_STEPS = [
-  {
-    step: "STEP 01",
-    title: "분석 및 상담",
-    desc: "원장님이 직접 얼굴 변형의 원인을 분석합니다.",
-  },
-  {
-    step: "STEP 02",
-    title: "척추 밸런스 관리",
-    desc: "근본 원인인 척추 정렬을 먼저 잡습니다.",
-  },
-  {
-    step: "STEP 03",
-    title: "얼굴 축소 관리",
-    desc: "노폐물 분해로 슬림한 얼굴 라인을 만듭니다.",
-  },
-  {
-    step: "STEP 04",
-    title: "비대칭 관리",
-    desc: "귀소본능 기법으로 본연의 균형을 되찾습니다.",
-  },
-  {
-    step: "STEP 05",
-    title: "피부 관리",
-    desc: "아로마오일 케어와 마스크팩으로 마무리.",
-  },
-];
-
-const REVIEWS = [
-  {
-    rating: 5,
-    text: "분위기와 서비스가 기대 이상이었고 원장님의 친절함과 숙련도가 느껴졌어요.",
-    author: "padOOOO",
-    date: "2025.12",
-  },
-  {
-    rating: 5,
-    text: "근육의 긴장도, 턱관절 사용 습관, 얼굴 라인의 흐름까지 꼼꼼하게 분석해주셔서 관리 전부터 신뢰감이 생겼습니다.",
-    author: "ahjOOOO",
-    date: "2025.12",
-  },
-  {
-    rating: 5,
-    text: "과한 변화가 아니라 내 원래 얼굴 윤곽을 최대한 살리는 느낌이라 자연스러워요.",
-    author: "ekqOOOO",
-    date: "2025.11",
-  },
-];
-
 const KRW = (n: number) => `${n.toLocaleString("ko-KR")}원`;
+
+// site.json 의 "\n" 줄바꿈을 <br/> 로 렌더(반응형 br 대신 일반 br).
+function nl2br(text: string) {
+  return text.split("\n").map((line, i, arr) => (
+    <span key={i}>
+      {line}
+      {i < arr.length - 1 && <br />}
+    </span>
+  ));
+}
+
+// 브랜드 스토리 본문의 핵심 용어를 굵게 강조(원문 디자인 유지).
+function highlightStory(text: string) {
+  return text.split(/(얼굴의 귀소본능|회귀 관리)/g).map((part, i) =>
+    part === "얼굴의 귀소본능" || part === "회귀 관리" ? (
+      <span key={i} className="font-semibold text-ink">
+        {part}
+      </span>
+    ) : (
+      part
+    ),
+  );
+}
+
+const { contact, hero, brandStory, selfCheck, videos, treatments, signature, beforeAfter, gallery, reviews } = site;
 
 export default function Home() {
   return (
@@ -202,10 +91,10 @@ export default function Home() {
           </nav>
           <div className="flex items-center gap-3">
             <a
-              href="tel:041-567-0341"
+              href={`tel:${contact.phone1}`}
               className="hidden lg:inline-flex items-center gap-1.5 text-sm font-medium text-ink"
             >
-              <Phone className="h-4 w-4" /> 041-567-0341
+              <Phone className="h-4 w-4" /> {contact.phone1}
             </a>
             <a href="#contact" className="btn-pill-primary hidden sm:inline-flex">
               예약 상담
@@ -236,7 +125,7 @@ export default function Home() {
             <div className="relative order-1 lg:order-2">
               <div className="relative aspect-[4/5] rounded-[24px] overflow-hidden bg-surface-warm shadow-[var(--shadow-card-float)]">
                 <Image
-                  src="/images/custom/hero-model.webp"
+                  src={hero.image}
                   alt="페이스 케어 모델"
                   fill
                   priority
@@ -256,46 +145,50 @@ export default function Home() {
                   <Sparkles className="h-6 w-6 text-accent-gold-active" />
                 </div>
                 <div>
-                  <p className="text-[13px] font-semibold leading-tight">시그니처 회귀 관리</p>
-                  <p className="text-xs text-muted mt-0.5">5단계 1:1 책임 케어</p>
+                  <p className="text-[13px] font-semibold leading-tight">{hero.signatureCardTitle}</p>
+                  <p className="text-xs text-muted mt-0.5">{hero.signatureCardDesc}</p>
                 </div>
               </div>
             </div>
 
-            {/* Text content — `contents` on mobile lets each child take its own
-                order slot in the parent grid. On desktop it becomes a block
-                column with the children stacking in DOM order. */}
+            {/* Text content */}
             <div className="contents lg:block lg:order-1">
-              {/* Badges — mobile order 4 / desktop order 1 (top of text column) */}
+              {/* Badges */}
               <div className="order-4 lg:order-none flex flex-wrap gap-2 lg:mb-6">
-                <span className="inline-flex items-center gap-1 bg-canvas/90 backdrop-blur text-primary-active text-[11px] font-semibold rounded-full px-3 py-1.5 tracking-wide shadow-sm">
-                  <Award className="h-3 w-3" /> 30년 경력
-                </span>
-                <span className="inline-flex items-center bg-canvas/90 backdrop-blur text-primary-active text-[11px] font-semibold rounded-full px-3 py-1.5 tracking-wide shadow-sm">
-                  1:1 책임 관리
-                </span>
-                <span className="inline-flex items-center bg-canvas/90 backdrop-blur text-primary-active text-[11px] font-semibold rounded-full px-3 py-1.5 tracking-wide shadow-sm">
-                  SBS 방송 출연
-                </span>
+                {hero.badges.map((b, i) => (
+                  <span
+                    key={i}
+                    className="inline-flex items-center gap-1 bg-canvas/90 backdrop-blur text-primary-active text-[11px] font-semibold rounded-full px-3 py-1.5 tracking-wide shadow-sm"
+                  >
+                    {i === 0 && <Award className="h-3 w-3" />}
+                    {b}
+                  </span>
+                ))}
               </div>
 
-              {/* Headline — mobile order 2 */}
+              {/* Headline */}
               <h1 className="order-2 lg:order-none text-[28px] sm:text-[34px] lg:text-[44px] font-semibold tracking-tight leading-[1.2] text-ink">
-                당신의 본연을
-                <br />
-                되찾는 시간,
-                <br />
-                <span className="text-primary">회귀 관리</span>
+                {hero.headline.map((line, i) => {
+                  const last = i === hero.headline.length - 1;
+                  return last ? (
+                    <span key={i} className="text-primary">
+                      {line}
+                    </span>
+                  ) : (
+                    <span key={i}>
+                      {line}
+                      <br />
+                    </span>
+                  );
+                })}
               </h1>
 
-              {/* Subtitle — mobile order 3 */}
+              {/* Subtitle */}
               <p className="order-3 lg:order-none lg:mt-6 text-base lg:text-lg text-body leading-relaxed max-w-[480px]">
-                30년 경력 강희석 원장이 직접 진행하는 1:1 책임 관리.
-                <br className="hidden sm:block" />
-                얼굴의 귀소본능을 활용해 본연의 균형을 되찾아 드립니다.
+                {nl2br(hero.subtitle)}
               </p>
 
-              {/* CTAs — mobile order 6 (bottom) / desktop after subtitle */}
+              {/* CTAs */}
               <div className="order-6 lg:order-none lg:mt-8 flex flex-wrap gap-3">
                 <a href="#contact" className="btn-primary">
                   <Calendar className="h-4 w-4 mr-2" /> 예약 상담
@@ -305,26 +198,19 @@ export default function Home() {
                 </a>
               </div>
 
-              {/* Stats — mobile order 5 / desktop after CTAs */}
+              {/* Stats */}
               <dl className="order-5 lg:order-none lg:mt-10 grid grid-cols-3 gap-6 max-w-[420px] pt-6 border-t border-hairline">
-                <div>
-                  <dt className="text-xs text-muted">경력</dt>
-                  <dd className="mt-1 text-[22px] font-semibold text-ink tabular-nums">
-                    30<span className="text-sm text-muted ml-0.5">년</span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs text-muted">시술 회차</dt>
-                  <dd className="mt-1 text-[22px] font-semibold text-ink tabular-nums">
-                    10,000+
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs text-muted">평점</dt>
-                  <dd className="mt-1 text-[22px] font-semibold text-ink tabular-nums">
-                    4.9<span className="text-sm text-muted ml-0.5">/5</span>
-                  </dd>
-                </div>
+                {hero.stats.map((s, i) => (
+                  <div key={i}>
+                    <dt className="text-xs text-muted">{s.label}</dt>
+                    <dd className="mt-1 text-[22px] font-semibold text-ink tabular-nums">
+                      {s.value}
+                      {s.unit && (
+                        <span className="text-sm text-muted ml-0.5">{s.unit}</span>
+                      )}
+                    </dd>
+                  </div>
+                ))}
               </dl>
             </div>
           </div>
@@ -334,23 +220,21 @@ export default function Home() {
         <section id="about" className="py-20 lg:py-[80px] bg-canvas">
           <div className="mx-auto max-w-[1200px] px-5 lg:px-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="relative">
-              {/* Main portrait card */}
               <div className="aspect-[4/5] bg-gradient-to-b from-surface-warm to-primary-soft/30 rounded-[20px] relative overflow-hidden shadow-[var(--shadow-card-float)]">
                 <Image
-                  src="/images/custom/doctor-portrait.webp"
+                  src={brandStory.image}
                   alt="강희석 원장 포트레이트"
                   fill
                   sizes="(min-width: 1024px) 460px, 90vw"
                   className="object-cover object-center"
                 />
-                {/* Floating bottom card */}
                 <div className="absolute bottom-5 left-5 right-5 bg-canvas/95 backdrop-blur rounded-[14px] p-4 flex items-center gap-3 shadow-sm">
                   <div className="h-11 w-11 rounded-full bg-primary-soft flex items-center justify-center shrink-0">
                     <Award className="h-5 w-5 text-primary" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[14px] font-semibold">마법의 손</p>
-                    <p className="text-xs text-muted">30년 경력 · SBS 생방송 투데이 출연</p>
+                    <p className="text-[14px] font-semibold">{brandStory.doctorCardName}</p>
+                    <p className="text-xs text-muted">{brandStory.doctorCardDesc}</p>
                   </div>
                 </div>
               </div>
@@ -360,50 +244,13 @@ export default function Home() {
                 BRAND STORY
               </p>
               <h2 className="text-[22px] lg:text-[28px] font-semibold tracking-tight leading-snug">
-                제 손이 만들어지기까지,
-                <br />
-                30년이 걸렸습니다.
+                {nl2br(brandStory.title)}
               </h2>
               <div className="mt-6 space-y-4 text-body leading-relaxed">
-                <p>
-                  서른 즈음, 한 번의 사고로 허리를 크게 다쳤습니다. 병원에서는
-                  &ldquo;시간이 약&rdquo;이라고 했지만, 통증은 1년이 지나도
-                  가시지 않았습니다. 앉는 것, 걷는 것, 잠드는 것까지 일상이
-                  무너지던 시기였습니다.
-                </p>
-                <p>
-                  지인의 소개로 전문 관리를 받기 시작했습니다. 한두 번에
-                  나아질 일이 아니라는 건 저도 알았습니다. 그저 꾸준히
-                  받았습니다. 몇 개월이 지나자, 통증이 조금씩 옅어졌고
-                  반년이 지난 어느 날 문득 깨달았습니다. 일상이 돌아와 있다는
-                  것을.
-                </p>
-                <p>
-                  손이 몸을 바꿀 수 있다는 사실이 저를 사로잡았습니다.
-                  병원도 약도 해내지 못한 일을 사람의 손이 해내고
-                  있었습니다. 그 원리를 직접 익히고 싶어 그날부터 공부와
-                  수련을 시작했습니다. 몇 년이 걸렸고, 그 뒤로 다시 몇 년이
-                  걸렸습니다.
-                </p>
-                <p>
-                  몸의 균형이 무너지면 얼굴의 좌우도 흔들립니다. 척추가 틀어진
-                  분은 광대 높이가 다르고, 골반이 기운 분은 턱선이 한쪽으로
-                  쏠립니다. 저는 몸에서 배운 원리를 얼굴에 옮겨 적용하기
-                  시작했습니다. 본연의 얼굴형으로 돌아가려는 힘이 있다고
-                  믿었고, 저는 그 힘을
-                  <span className="font-semibold text-ink"> 얼굴의 귀소본능</span>
-                  이라 부르고, 그것을 깨워 드리는 기법을
-                  <span className="font-semibold text-ink"> 회귀 관리</span>로
-                  정리했습니다.
-                </p>
-                <p>
-                  그렇게 30년이 흘렀고, 1만 명이 넘는 분들이 제 손을
-                  거쳐가셨습니다. &lsquo;마법의 손&rsquo;이라는 별명은
-                  제가 붙인 것이 아니라, 변화를 직접 마주한 손님들이 건네주신
-                  말입니다. 과분한 별명을 지키기 위해 저는 오늘도, 한 분을
-                  마주할 때마다 처음처럼 손을 얹습니다.
-                </p>
-                <p className="pt-2 text-sm text-muted">강희석, 페이스명가 원장</p>
+                {brandStory.paragraphs.map((p, i) => (
+                  <p key={i}>{i === 3 ? highlightStory(p) : p}</p>
+                ))}
+                <p className="pt-2 text-sm text-muted">{brandStory.signature}</p>
               </div>
             </div>
           </div>
@@ -417,19 +264,15 @@ export default function Home() {
                 SELF-DIAGNOSIS
               </p>
               <h2 className="text-[22px] lg:text-[28px] font-semibold tracking-tight">
-                이런 고민, 있으세요?
+                {selfCheck.title}
               </h2>
-              <p className="mt-4 text-body leading-relaxed">
-                강희석 원장이 직접 설명하는 얼굴 비대칭 자가 진단법.
-                <br className="hidden sm:block" />
-                아래 항목 중 하나라도 해당된다면 회귀 관리가 도움이 될 수 있습니다.
-              </p>
+              <p className="mt-4 text-body leading-relaxed">{nl2br(selfCheck.desc)}</p>
             </div>
 
             <div className="grid lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-12 items-start">
               {/* Symptom checklist */}
               <ul className="space-y-2.5">
-                {SELF_CHECK_ITEMS.map((item, i) => (
+                {selfCheck.items.map((item, i) => (
                   <li
                     key={i}
                     className="flex items-start gap-3 px-5 py-4 bg-canvas rounded-[14px] border border-hairline transition-colors hover:border-primary"
@@ -444,40 +287,8 @@ export default function Home() {
                 ))}
               </ul>
 
-              {/* YouTube video */}
-              <div className="lg:sticky lg:top-[88px]">
-                <div className="aspect-video rounded-[14px] overflow-hidden bg-ink shadow-[var(--shadow-card-float)] border border-hairline">
-                  <iframe
-                    src={`https://www.youtube-nocookie.com/embed/${YT_VIDEO_ID}?rel=0&modestbranding=1`}
-                    title="얼굴 비대칭 자가 진단법 — 강남페이스명가"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                    className="w-full h-full"
-                  />
-                </div>
-                <div className="mt-5 flex items-start gap-3.5">
-                  <div className="h-11 w-11 rounded-full bg-primary-soft flex items-center justify-center shrink-0">
-                    <PlayCircle className="h-5 w-5 text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[15px] font-semibold leading-tight">
-                      얼굴 비대칭 자가 진단법 (Self-diagnosis)
-                    </p>
-                    <p className="text-sm text-muted mt-1">
-                      강남 마법의손 TV · 강희석 원장
-                    </p>
-                  </div>
-                  <a
-                    href={`https://youtu.be/${YT_VIDEO_ID}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hidden sm:inline-flex items-center gap-1 text-xs font-medium text-muted hover:text-primary shrink-0 mt-1"
-                  >
-                    YouTube에서 보기 <ChevronRight className="h-3 w-3" />
-                  </a>
-                </div>
-              </div>
+              {/* YouTube video carousel */}
+              <VideoCarousel videos={videos} />
             </div>
           </div>
         </section>
@@ -490,14 +301,12 @@ export default function Home() {
                 OUR TREATMENTS
               </p>
               <h2 className="text-[22px] lg:text-[26px] font-semibold tracking-tight">
-                페이스명가가 제공하는 관리
+                {treatments.title}
               </h2>
-              <p className="mt-3 text-muted leading-relaxed">
-                30년 노하우를 담은 1:1 맞춤 관리 프로그램입니다.
-              </p>
+              <p className="mt-3 text-muted leading-relaxed">{treatments.desc}</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-6 max-w-[840px] mx-auto">
-              {TREATMENTS.map((t) => (
+              {treatments.items.map((t) => (
                 <article key={t.name} className="card-base p-8 lg:p-10 group flex flex-col items-center text-center">
                   <div className="aspect-square w-[200px] lg:w-[220px] relative overflow-hidden rounded-full bg-gradient-to-br from-surface-warm to-primary-soft/30 mb-6 transition-transform duration-500 group-hover:scale-[1.04]">
                     <Image
@@ -515,15 +324,13 @@ export default function Home() {
                     {t.desc}
                   </p>
                   <div className="mt-6 w-full max-w-[280px] flex items-center justify-between pt-5 border-t border-hairline-soft">
-                    <span className="text-xs text-muted">
-                      소요 {t.duration}
-                    </span>
+                    <span className="text-xs text-muted">소요 {t.duration}</span>
                     <div className="text-right">
                       <span className="text-base font-semibold tabular-nums">
                         {KRW(t.priceFrom)}
                       </span>
                       <span className="text-xs text-muted block">
-                        {t.pkg.count}회 {KRW(t.pkg.price)}
+                        {t.pkgCount}회 {KRW(t.pkgPrice)}
                       </span>
                     </div>
                   </div>
@@ -545,19 +352,13 @@ export default function Home() {
                 <Sparkles className="h-3 w-3 mr-1" /> SIGNATURE
               </span>
               <h2 className="text-[24px] lg:text-[28px] font-semibold tracking-tight leading-snug">
-                페이스명가만의
-                <br className="sm:hidden" /> 회귀 관리
+                {nl2br(signature.title)}
               </h2>
-              <p className="mt-4 text-body leading-relaxed">
-                본연의 얼굴형으로 돌아가려는 &lsquo;얼굴의 귀소본능&rsquo;을
-                활용한 관리법입니다. 강희석 원장만의 특수한 테크닉으로
-                불필요한 노폐물을 분해해 슬림한 얼굴 윤곽과 윤기나는
-                피부톤을 만들어 드립니다.
-              </p>
+              <p className="mt-4 text-body leading-relaxed">{signature.desc}</p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-5 mb-14">
-              {PROCESS_STEPS.map((s) => (
+              {signature.steps.map((s) => (
                 <div
                   key={s.step}
                   className="bg-canvas rounded-[14px] p-6 border border-accent-gold-soft"
@@ -568,9 +369,7 @@ export default function Home() {
                   <h3 className="mt-2 text-[16px] font-semibold tracking-tight">
                     {s.title}
                   </h3>
-                  <p className="mt-2 text-sm text-muted leading-relaxed">
-                    {s.desc}
-                  </p>
+                  <p className="mt-2 text-sm text-muted leading-relaxed">{s.desc}</p>
                 </div>
               ))}
             </div>
@@ -581,22 +380,18 @@ export default function Home() {
               </span>
               <p className="text-xs text-muted">회귀 관리 풀패키지</p>
               <p className="mt-2 text-[28px] font-bold tabular-nums tracking-tight">
-                {KRW(800000)}
-                <span className="text-sm text-muted font-normal ml-2">/ 11회</span>
+                {KRW(signature.packagePrice)}
+                <span className="text-sm text-muted font-normal ml-2">
+                  / {signature.packageCount}
+                </span>
               </p>
               <ul className="mt-5 space-y-2.5 text-sm text-body">
-                <li className="flex items-start gap-2">
-                  <span className="text-accent-gold">✓</span>
-                  분석 · 척추 · 얼굴 축소 · 비대칭 · 피부 5단계 포함
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent-gold">✓</span>
-                  원장님 1:1 책임 관리
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-accent-gold">✓</span>
-                  아로마오일 케어 + 마스크팩 무료 제공
-                </li>
+                {signature.includes.map((inc, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-accent-gold">✓</span>
+                    {inc}
+                  </li>
+                ))}
               </ul>
               <a href="#contact" className="btn-gold mt-7 w-full">
                 회귀 관리 예약하기
@@ -613,24 +408,55 @@ export default function Home() {
                 BEFORE & AFTER
               </p>
               <h2 className="text-[22px] lg:text-[26px] font-semibold tracking-tight">
-                실제 고객 변화 사례
+                {beforeAfter.title}
               </h2>
             </div>
-            <p className="text-sm text-muted mb-8 -mt-4">
-              가운데 손잡이를 좌우로 드래그하여 시술 전후를 비교해보세요.
-            </p>
+            <p className="text-sm text-muted mb-8 -mt-4">{beforeAfter.desc}</p>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-              {BEFORE_AFTER_PAIRS.map((p) => (
+              {beforeAfter.pairs.map((p) => (
                 <BeforeAfterSlider
                   key={p.caseLabel}
                   beforeSrc={p.before}
                   afterSrc={p.after}
                   caseLabel={p.caseLabel}
-                  beforeAdjust={p.beforeAdjust}
-                  afterAdjust={p.afterAdjust}
+                  beforeAdjust={p.beforeAdjust as ImageAdjust}
+                  afterAdjust={p.afterAdjust as ImageAdjust}
                   beforeAlt={`${p.caseLabel} 시술 전`}
                   afterAlt={`${p.caseLabel} 시술 후`}
                 />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============ GALLERY ============ */}
+        <section id="gallery" className="py-20 lg:py-[80px] bg-surface-warm">
+          <div className="mx-auto max-w-[1200px] px-5 lg:px-10">
+            <div className="mb-8 lg:mb-10">
+              <p className="uppercase text-[10px] tracking-[0.08em] font-bold text-primary mb-3">
+                GALLERY
+              </p>
+              <h2 className="text-[22px] lg:text-[26px] font-semibold tracking-tight">
+                {gallery.title}
+              </h2>
+              <p className="text-sm text-muted mt-3">{gallery.desc}</p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-6 gap-4 lg:gap-5">
+              {gallery.images.map((src, i) => (
+                <div
+                  key={src}
+                  className={`group relative aspect-[4/3] overflow-hidden rounded-[14px] border border-hairline bg-surface-card shadow-[var(--shadow-card-float)] ${
+                    i < 3 ? "lg:col-span-2" : "lg:col-span-3"
+                  } ${i === 4 ? "col-span-2 lg:col-span-3" : ""}`}
+                >
+                  <Image
+                    src={src}
+                    alt={`강남페이스명가 현장 ${i + 1}`}
+                    fill
+                    sizes="(max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                </div>
               ))}
             </div>
           </div>
@@ -658,7 +484,7 @@ export default function Home() {
               </div>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {REVIEWS.map((r, i) => (
+              {reviews.map((r, i) => (
                 <article
                   key={i}
                   className="bg-canvas rounded-[14px] p-7 border border-hairline"
@@ -702,9 +528,9 @@ export default function Home() {
                   <p className="mt-1.5 text-base flex items-start gap-2">
                     <MapPin className="h-4 w-4 mt-1 shrink-0 text-primary" />
                     <span>
-                      충청남도 천안시 동남구
+                      {contact.addressLine1}
                       <br />
-                      대흥동85 (은행길5~5)
+                      {contact.addressLine2}
                     </span>
                   </p>
                 </div>
@@ -712,23 +538,23 @@ export default function Home() {
                   <p className="text-xs font-medium text-muted">운영시간</p>
                   <p className="mt-1.5 text-base flex items-start gap-2">
                     <Clock className="h-4 w-4 mt-1 shrink-0 text-primary" />
-                    매일 10:00 – 20:00
+                    {contact.hours}
                   </p>
                 </div>
                 <div className="bg-surface-soft rounded-[14px] p-6 sm:col-span-2">
                   <p className="text-xs font-medium text-muted">전화</p>
                   <div className="mt-1.5 flex flex-wrap gap-4 text-base tabular-nums">
                     <a
-                      href="tel:041-567-0341"
+                      href={`tel:${contact.phone1}`}
                       className="flex items-center gap-2 hover:text-primary"
                     >
-                      <Phone className="h-4 w-4 text-primary" /> 041-567-0341
+                      <Phone className="h-4 w-4 text-primary" /> {contact.phone1}
                     </a>
                     <a
-                      href="tel:010-2970-0341"
+                      href={`tel:${contact.phone2}`}
                       className="flex items-center gap-2 hover:text-primary"
                     >
-                      <Phone className="h-4 w-4 text-primary" /> 010-2970-0341
+                      <Phone className="h-4 w-4 text-primary" /> {contact.phone2}
                     </a>
                   </div>
                 </div>
@@ -739,19 +565,20 @@ export default function Home() {
             </div>
 
             <aside className="bg-surface-card rounded-[20px] p-7 border border-hairline lg:sticky lg:top-[88px]">
-              <h3 className="text-[20px] font-semibold tracking-tight">
-                예약 상담
-              </h3>
+              <h3 className="text-[20px] font-semibold tracking-tight">예약 상담</h3>
               <p className="mt-1 text-sm text-muted">
                 전화 또는 카카오톡으로 빠른 상담이 가능합니다.
               </p>
               <div className="mt-6 space-y-3">
-                <a href="tel:041-567-0341" className="btn-primary w-full">
+                <a href={`tel:${contact.phone1}`} className="btn-primary w-full">
                   <Phone className="h-4 w-4 mr-2" /> 전화로 예약하기
                 </a>
-                <a href="https://open.kakao.com/o/sPLmnEyi"
-              target="_blank"
-              rel="noopener noreferrer" className="btn-kakao w-full">
+                <a
+                  href={contact.kakaoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-kakao w-full"
+                >
                   <MessageCircle className="h-4 w-4" /> 카카오톡 상담
                 </a>
               </div>
@@ -804,17 +631,17 @@ export default function Home() {
           <div>
             <p className="text-base font-medium mb-4">연락</p>
             <ul className="space-y-2 text-sm text-body">
-              <li className="tabular-nums">041-567-0341</li>
-              <li className="tabular-nums">010-2970-0341</li>
-              <li>매일 10:00 – 20:00</li>
-              <li>충청남도 천안시 동남구 대흥동85</li>
+              <li className="tabular-nums">{contact.phone1}</li>
+              <li className="tabular-nums">{contact.phone2}</li>
+              <li>{contact.hours}</li>
+              <li>{contact.addressFull}</li>
             </ul>
           </div>
         </div>
         <div className="border-t border-hairline">
           <div className="mx-auto max-w-[1200px] px-5 lg:px-10 py-5 text-xs text-muted flex flex-wrap items-center justify-between gap-2">
             <span>© 2026 강남페이스명가. All rights reserved.</span>
-            <span>사업자등록번호 554-31-01102</span>
+            <span>사업자등록번호 {contact.bizNo}</span>
           </div>
         </div>
       </footer>
@@ -822,16 +649,16 @@ export default function Home() {
       {/* ============ MOBILE STICKY BOTTOM CTA ============ */}
       <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-canvas border-t border-hairline grid grid-cols-3 h-16 shadow-[0_-2px_8px_rgba(0,0,0,0.04)]">
         <a
-          href="tel:041-567-0341"
+          href={`tel:${contact.phone1}`}
           className="flex flex-col items-center justify-center text-ink text-xs gap-0.5"
         >
           <Phone className="h-5 w-5" />
           전화
         </a>
         <a
-          href="https://open.kakao.com/o/sPLmnEyi"
-              target="_blank"
-              rel="noopener noreferrer"
+          href={contact.kakaoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex flex-col items-center justify-center bg-kakao-yellow text-kakao-ink text-xs gap-0.5 font-medium"
         >
           <MessageCircle className="h-5 w-5" />
@@ -848,9 +675,9 @@ export default function Home() {
 
       {/* ============ FLOATING KAKAO BUTTON ============ */}
       <a
-        href="https://open.kakao.com/o/sPLmnEyi"
-              target="_blank"
-              rel="noopener noreferrer"
+        href={contact.kakaoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label="카카오톡 상담"
         className="fixed bottom-20 md:bottom-6 right-5 z-40 h-14 w-14 rounded-full bg-kakao-yellow text-kakao-ink shadow-[var(--shadow-card-float)] flex items-center justify-center hover:scale-105 transition-transform"
       >
@@ -862,4 +689,3 @@ export default function Home() {
     </>
   );
 }
-

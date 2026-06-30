@@ -1,0 +1,181 @@
+{
+  "contact": {
+    "phone1": "041-567-0341",
+    "phone2": "010-2970-0341",
+    "addressLine1": "충청남도 천안시 동남구",
+    "addressLine2": "대흥동85 (은행길5~5)",
+    "addressFull": "충청남도 천안시 동남구 대흥동85",
+    "hours": "매일 10:00 – 20:00",
+    "bizNo": "554-31-01102",
+    "kakaoUrl": "https://open.kakao.com/o/sPLmnEyi"
+  },
+  "hero": {
+    "badges": ["30년 경력", "1:1 책임 관리", "SBS 방송 출연"],
+    "headline": ["당신의 본연을", "되찾는 시간,", "회귀 관리"],
+    "subtitle": "30년 경력 강희석 원장이 직접 진행하는 1:1 책임 관리.\n얼굴의 귀소본능을 활용해 본연의 균형을 되찾아 드립니다.",
+    "image": "/images/custom/hero-model.webp",
+    "signatureCardTitle": "시그니처 회귀 관리",
+    "signatureCardDesc": "5단계 1:1 책임 케어",
+    "stats": [
+      { "label": "경력", "value": "30", "unit": "년" },
+      { "label": "시술 회차", "value": "10,000+", "unit": "" },
+      { "label": "평점", "value": "4.9", "unit": "/5" }
+    ]
+  },
+  "brandStory": {
+    "image": "/images/custom/doctor-portrait.webp",
+    "doctorCardName": "마법의 손",
+    "doctorCardDesc": "30년 경력 · SBS 생방송 투데이 출연",
+    "title": "제 손이 만들어지기까지,\n30년이 걸렸습니다.",
+    "paragraphs": [
+      "서른 즈음, 한 번의 사고로 허리를 크게 다쳤습니다. 병원에서는 “시간이 약”이라고 했지만, 통증은 1년이 지나도 가시지 않았습니다. 앉는 것, 걷는 것, 잠드는 것까지 일상이 무너지던 시기였습니다.",
+      "지인의 소개로 전문 관리를 받기 시작했습니다. 한두 번에 나아질 일이 아니라는 건 저도 알았습니다. 그저 꾸준히 받았습니다. 몇 개월이 지나자, 통증이 조금씩 옅어졌고 반년이 지난 어느 날 문득 깨달았습니다. 일상이 돌아와 있다는 것을.",
+      "손이 몸을 바꿀 수 있다는 사실이 저를 사로잡았습니다. 병원도 약도 해내지 못한 일을 사람의 손이 해내고 있었습니다. 그 원리를 직접 익히고 싶어 그날부터 공부와 수련을 시작했습니다. 몇 년이 걸렸고, 그 뒤로 다시 몇 년이 걸렸습니다.",
+      "몸의 균형이 무너지면 얼굴의 좌우도 흔들립니다. 척추가 틀어진 분은 광대 높이가 다르고, 골반이 기운 분은 턱선이 한쪽으로 쏠립니다. 저는 몸에서 배운 원리를 얼굴에 옮겨 적용하기 시작했습니다. 본연의 얼굴형으로 돌아가려는 힘이 있다고 믿었고, 저는 그 힘을 얼굴의 귀소본능이라 부르고, 그것을 깨워 드리는 기법을 회귀 관리로 정리했습니다.",
+      "그렇게 30년이 흘렀고, 1만 명이 넘는 분들이 제 손을 거쳐가셨습니다. ‘마법의 손’이라는 별명은 제가 붙인 것이 아니라, 변화를 직접 마주한 손님들이 건네주신 말입니다. 과분한 별명을 지키기 위해 저는 오늘도, 한 분을 마주할 때마다 처음처럼 손을 얹습니다."
+    ],
+    "signature": "강희석, 페이스명가 원장"
+  },
+  "selfCheck": {
+    "title": "이런 고민, 있으세요?",
+    "desc": "강희석 원장이 직접 설명하는 얼굴 비대칭 자가 진단법.\n아래 항목 중 하나라도 해당된다면 회귀 관리가 도움이 될 수 있습니다.",
+    "items": [
+      "턱이 한쪽으로 틀어져 보이는 경우",
+      "양쪽 광대의 높이와 돌출이 다른 경우",
+      "코가 휘어져 보이고 눈의 크기와 높이가 다른 경우",
+      "턱에서 통증·소리가 나고 주걱턱이 있는 경우",
+      "위 아래 입술과 치아 배열이 안 맞는 경우",
+      "얼굴이 너무 길거나 짧고, 사각지거나 둥글어 보이는 경우",
+      "셀카를 찍으면 좌우 비대칭으로 보이는 경우"
+    ]
+  },
+  "videos": [
+    {
+      "id": "qyhy9OWHEug",
+      "title": "얼굴 비대칭 자가 진단법 (Self-diagnosis)",
+      "channel": "강남 마법의손 TV · 강희석 원장"
+    },
+    {
+      "id": "rvPOaerqdPQ",
+      "title": "얼굴 비대칭 고민 끝 (Facial Chiropractic)",
+      "channel": "강남 마법의손 TV · 강희석 원장"
+    }
+  ],
+  "treatments": {
+    "title": "페이스명가가 제공하는 관리",
+    "desc": "30년 노하우를 담은 1:1 맞춤 관리 프로그램입니다.",
+    "items": [
+      {
+        "name": "얼굴 윤곽 축소 관리",
+        "desc": "노폐물 분해로 슬림하고 선명한 얼굴 라인을 만들어 드립니다.",
+        "duration": "40분",
+        "priceFrom": 50000,
+        "pkgCount": 11,
+        "pkgPrice": 500000,
+        "img": "/images/custom/treatment-1-contour.webp"
+      },
+      {
+        "name": "얼굴 비대칭 관리",
+        "desc": "본연의 좌우 균형을 되찾는 1:1 맞춤 케어입니다.",
+        "duration": "50분",
+        "priceFrom": 80000,
+        "pkgCount": 11,
+        "pkgPrice": 800000,
+        "img": "/images/custom/treatment-2-symmetry.webp"
+      }
+    ]
+  },
+  "signature": {
+    "title": "페이스명가만의\n회귀 관리",
+    "desc": "본연의 얼굴형으로 돌아가려는 ‘얼굴의 귀소본능’을 활용한 관리법입니다. 강희석 원장만의 특수한 테크닉으로 불필요한 노폐물을 분해해 슬림한 얼굴 윤곽과 윤기나는 피부톤을 만들어 드립니다.",
+    "steps": [
+      { "step": "STEP 01", "title": "분석 및 상담", "desc": "원장님이 직접 얼굴 변형의 원인을 분석합니다." },
+      { "step": "STEP 02", "title": "척추 밸런스 관리", "desc": "근본 원인인 척추 정렬을 먼저 잡습니다." },
+      { "step": "STEP 03", "title": "얼굴 축소 관리", "desc": "노폐물 분해로 슬림한 얼굴 라인을 만듭니다." },
+      { "step": "STEP 04", "title": "비대칭 관리", "desc": "귀소본능 기법으로 본연의 균형을 되찾습니다." },
+      { "step": "STEP 05", "title": "피부 관리", "desc": "아로마오일 케어와 마스크팩으로 마무리." }
+    ],
+    "packagePrice": 800000,
+    "packageCount": "11회",
+    "includes": [
+      "분석 · 척추 · 얼굴 축소 · 비대칭 · 피부 5단계 포함",
+      "원장님 1:1 책임 관리",
+      "아로마오일 케어 + 마스크팩 무료 제공"
+    ]
+  },
+  "beforeAfter": {
+    "title": "실제 고객 변화 사례",
+    "desc": "가운데 손잡이를 좌우로 드래그하여 시술 전후를 비교해보세요.",
+    "pairs": [
+      {
+        "caseLabel": "CASE 01",
+        "before": "/images/wix/before-after-1.webp",
+        "after": "/images/wix/before-after-2.webp",
+        "beforeAdjust": { "face": { "y": 48, "h": 53, "zoom": 0.75 } },
+        "afterAdjust": { "face": { "y": 27, "h": 25, "zoom": 0.68 } }
+      },
+      {
+        "caseLabel": "CASE 02",
+        "before": "/images/cases/case02-before.png",
+        "after": "/images/cases/case02-after.png",
+        "beforeAdjust": { "face": { "y": 48, "h": 65 } },
+        "afterAdjust": { "face": { "y": 41, "h": 63 } }
+      },
+      {
+        "caseLabel": "CASE 03",
+        "before": "/images/wix/before-after-5.webp",
+        "after": "/images/wix/before-after-6.webp",
+        "beforeAdjust": { "face": { "y": 36, "h": 43 } },
+        "afterAdjust": { "face": { "y": 40, "h": 46 } }
+      },
+      {
+        "caseLabel": "CASE 04",
+        "before": "/images/wix/before-after-7.webp",
+        "after": "/images/wix/before-after-8.webp",
+        "beforeAdjust": { "face": { "y": 39, "h": 38 } },
+        "afterAdjust": { "face": { "y": 42, "h": 65 } }
+      }
+    ]
+  },
+  "gallery": {
+    "title": "방송 출연 & 현장 갤러리",
+    "desc": "SBS 생방송 투데이 출연부터 매장 현장까지, 강남페이스명가가 걸어온 길입니다.",
+    "images": [
+      "/images/gallery/gallery-1.jpg",
+      "/images/gallery/gallery-2.jpg",
+      "/images/gallery/gallery-3.jpg",
+      "/images/gallery/gallery-4.jpg",
+      "/images/gallery/gallery-5.jpg"
+    ]
+  },
+  "reviews": [
+    {
+      "rating": 5,
+      "text": "분위기와 서비스가 기대 이상이었고 원장님의 친절함과 숙련도가 느껴졌어요.",
+      "author": "padOOOO",
+      "date": "2025.12"
+    },
+    {
+      "rating": 5,
+      "text": "근육의 긴장도, 턱관절 사용 습관, 얼굴 라인의 흐름까지 꼼꼼하게 분석해주셔서 관리 전부터 신뢰감이 생겼습니다.",
+      "author": "ahjOOOO",
+      "date": "2025.12"
+    },
+    {
+      "rating": 5,
+      "text": "과한 변화가 아니라 내 원래 얼굴 윤곽을 최대한 살리는 느낌이라 자연스러워요.",
+      "author": "ekqOOOO",
+      "date": "2025.11"
+    }
+  ],
+  "promo": {
+    "enabled": true,
+    "discount": "50",
+    "badge": "First Visit",
+    "lead": "강남페이스명가 첫 방문 고객님께",
+    "headlineTop": "첫 방문",
+    "headlineBottom": "할인 이벤트",
+    "body": "30년 경력 강희석 원장의 1:1 회귀 관리,\n지금 예약하시면 반값 혜택을 드립니다.",
+    "cta": "지금 예약 상담받기"
+  }
+}
