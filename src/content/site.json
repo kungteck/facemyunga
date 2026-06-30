@@ -5,21 +5,41 @@
     "addressLine1": "충청남도 천안시 동남구",
     "addressLine2": "대흥동85 (은행길5~5)",
     "addressFull": "충청남도 천안시 동남구 대흥동85",
-    "hours": "매일 10:00 – 20:00",
+    "hours": "매일 10:00 – 20:00 ",
     "bizNo": "554-31-01102",
     "kakaoUrl": "https://open.kakao.com/o/sPLmnEyi"
   },
   "hero": {
-    "badges": ["30년 경력", "1:1 책임 관리", "SBS 방송 출연"],
-    "headline": ["당신의 본연을", "되찾는 시간,", "회귀 관리"],
+    "badges": [
+      "30년 경력",
+      "1:1 책임 관리",
+      "SBS 방송 출연"
+    ],
+    "headline": [
+      "당신의 본연을",
+      "되찾는 시간,",
+      "회귀 관리"
+    ],
     "subtitle": "30년 경력 강희석 원장이 직접 진행하는 1:1 책임 관리.\n얼굴의 귀소본능을 활용해 본연의 균형을 되찾아 드립니다.",
     "image": "/images/custom/hero-model.webp",
     "signatureCardTitle": "시그니처 회귀 관리",
     "signatureCardDesc": "5단계 1:1 책임 케어",
     "stats": [
-      { "label": "경력", "value": "30", "unit": "년" },
-      { "label": "시술 회차", "value": "10,000+", "unit": "" },
-      { "label": "평점", "value": "4.9", "unit": "/5" }
+      {
+        "label": "경력",
+        "value": "30",
+        "unit": "년"
+      },
+      {
+        "label": "시술 회차",
+        "value": "10,000+",
+        "unit": ""
+      },
+      {
+        "label": "평점",
+        "value": "4.9",
+        "unit": "/5"
+      }
     ]
   },
   "brandStory": {
@@ -89,11 +109,31 @@
     "title": "페이스명가만의\n회귀 관리",
     "desc": "본연의 얼굴형으로 돌아가려는 ‘얼굴의 귀소본능’을 활용한 관리법입니다. 강희석 원장만의 특수한 테크닉으로 불필요한 노폐물을 분해해 슬림한 얼굴 윤곽과 윤기나는 피부톤을 만들어 드립니다.",
     "steps": [
-      { "step": "STEP 01", "title": "분석 및 상담", "desc": "원장님이 직접 얼굴 변형의 원인을 분석합니다." },
-      { "step": "STEP 02", "title": "척추 밸런스 관리", "desc": "근본 원인인 척추 정렬을 먼저 잡습니다." },
-      { "step": "STEP 03", "title": "얼굴 축소 관리", "desc": "노폐물 분해로 슬림한 얼굴 라인을 만듭니다." },
-      { "step": "STEP 04", "title": "비대칭 관리", "desc": "귀소본능 기법으로 본연의 균형을 되찾습니다." },
-      { "step": "STEP 05", "title": "피부 관리", "desc": "아로마오일 케어와 마스크팩으로 마무리." }
+      {
+        "step": "STEP 01",
+        "title": "분석 및 상담",
+        "desc": "원장님이 직접 얼굴 변형의 원인을 분석합니다."
+      },
+      {
+        "step": "STEP 02",
+        "title": "척추 밸런스 관리",
+        "desc": "근본 원인인 척추 정렬을 먼저 잡습니다."
+      },
+      {
+        "step": "STEP 03",
+        "title": "얼굴 축소 관리",
+        "desc": "노폐물 분해로 슬림한 얼굴 라인을 만듭니다."
+      },
+      {
+        "step": "STEP 04",
+        "title": "비대칭 관리",
+        "desc": "귀소본능 기법으로 본연의 균형을 되찾습니다."
+      },
+      {
+        "step": "STEP 05",
+        "title": "피부 관리",
+        "desc": "아로마오일 케어와 마스크팩으로 마무리."
+      }
     ],
     "packagePrice": 800000,
     "packageCount": "11회",
@@ -111,29 +151,71 @@
         "caseLabel": "CASE 01",
         "before": "/images/wix/before-after-1.webp",
         "after": "/images/wix/before-after-2.webp",
-        "beforeAdjust": { "face": { "y": 48, "h": 53, "zoom": 0.75 } },
-        "afterAdjust": { "face": { "y": 27, "h": 25, "zoom": 0.68 } }
+        "beforeAdjust": {
+          "face": {
+            "y": 48,
+            "h": 53,
+            "zoom": 0.75
+          }
+        },
+        "afterAdjust": {
+          "face": {
+            "y": 27,
+            "h": 25,
+            "zoom": 0.68
+          }
+        }
       },
       {
         "caseLabel": "CASE 02",
         "before": "/images/cases/case02-before.png",
         "after": "/images/cases/case02-after.png",
-        "beforeAdjust": { "face": { "y": 48, "h": 65 } },
-        "afterAdjust": { "face": { "y": 41, "h": 63 } }
+        "beforeAdjust": {
+          "face": {
+            "y": 48,
+            "h": 65
+          }
+        },
+        "afterAdjust": {
+          "face": {
+            "y": 41,
+            "h": 63
+          }
+        }
       },
       {
         "caseLabel": "CASE 03",
         "before": "/images/wix/before-after-5.webp",
         "after": "/images/wix/before-after-6.webp",
-        "beforeAdjust": { "face": { "y": 36, "h": 43 } },
-        "afterAdjust": { "face": { "y": 40, "h": 46 } }
+        "beforeAdjust": {
+          "face": {
+            "y": 36,
+            "h": 43
+          }
+        },
+        "afterAdjust": {
+          "face": {
+            "y": 40,
+            "h": 46
+          }
+        }
       },
       {
         "caseLabel": "CASE 04",
         "before": "/images/wix/before-after-7.webp",
         "after": "/images/wix/before-after-8.webp",
-        "beforeAdjust": { "face": { "y": 39, "h": 38 } },
-        "afterAdjust": { "face": { "y": 42, "h": 65 } }
+        "beforeAdjust": {
+          "face": {
+            "y": 39,
+            "h": 38
+          }
+        },
+        "afterAdjust": {
+          "face": {
+            "y": 42,
+            "h": 65
+          }
+        }
       }
     ]
   },
