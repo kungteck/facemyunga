@@ -96,7 +96,11 @@ export default function Home() {
             >
               <Phone className="h-4 w-4" /> {contact.phone1}
             </a>
-            <a href="#contact" className="btn-pill-primary hidden sm:inline-flex">
+            <a
+              href="#contact"
+              className="btn-pill-primary hidden sm:inline-flex"
+              data-track="navi-book-btn"
+            >
               예약 상담
             </a>
             <MobileMenu links={NAV_LINKS} />
@@ -190,7 +194,7 @@ export default function Home() {
 
               {/* CTAs */}
               <div className="order-6 lg:order-none lg:mt-8 flex flex-wrap gap-3">
-                <a href="#contact" className="btn-primary">
+                <a href="#contact" className="btn-primary" data-track="mainbanner-book-btn">
                   <Calendar className="h-4 w-4 mr-2" /> 예약 상담
                 </a>
                 <a href="#treatments" className="btn-secondary">
@@ -570,7 +574,11 @@ export default function Home() {
                 전화 또는 카카오톡으로 빠른 상담이 가능합니다.
               </p>
               <div className="mt-6 space-y-3">
-                <a href={`tel:${contact.phone1}`} className="btn-primary w-full">
+                <a
+                  href={`tel:${contact.phone1}`}
+                  className="btn-primary w-full"
+                  data-track="call-book-btn"
+                >
                   <Phone className="h-4 w-4 mr-2" /> 전화로 예약하기
                 </a>
                 <a
@@ -578,6 +586,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-kakao w-full"
+                  data-track="kakao-book-btn"
                 >
                   <MessageCircle className="h-4 w-4" /> 카카오톡 상담
                 </a>
@@ -686,6 +695,17 @@ export default function Home() {
 
       {/* ============ BACK TO TOP BUTTON ============ */}
       <BackToTop />
+
+      {/* Meta Pixel noscript fallback — 공개 페이지에만 포함(/admin 제외 유지) */}
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: "none" }}
+          alt=""
+          src="https://www.facebook.com/tr?id=363904750985008&ev=PageView&noscript=1"
+        />
+      </noscript>
     </>
   );
 }

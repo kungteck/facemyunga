@@ -1,5 +1,39 @@
 import type { Metadata } from "next";
+import Script from "next/script";
+import { AnalyticsEvents } from "@/components/AnalyticsEvents";
 import "./globals.css";
+
+// GA4·Meta Pixel 부트스트랩.
+// /admin(CMS) 사용 기록이 통계에 섞이지 않도록, 런타임에 pathname 을 확인해
+// /admin 이 아닐 때만 외부 스크립트를 주입하고 init/PageView 를 실행한다.
+const ANALYTICS_BOOTSTRAP = `
+(function () {
+  if (location.pathname.indexOf('/admin') === 0) return;
+
+  // ---- Google Analytics 4 (gtag.js) ----
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-P8T1VFPEF7');
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-P8T1VFPEF7';
+  document.head.appendChild(ga);
+
+  // ---- Meta Pixel (fbevents.js) ----
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '363904750985008');
+  fbq('track', 'PageView');
+})();
+`;
 
 export const metadata: Metadata = {
   // canonical 도메인(www). OG·sitemap 등 절대 URL 의 기준이 된다.
@@ -56,6 +90,12 @@ export default function RootLayout({
     <html lang="ko" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-canvas text-ink">
         {children}
+        <Script
+          id="analytics-bootstrap"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: ANALYTICS_BOOTSTRAP }}
+        />
+        <AnalyticsEvents />
       </body>
     </html>
   );
