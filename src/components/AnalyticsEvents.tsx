@@ -29,6 +29,10 @@ export function AnalyticsEvents() {
       }
       if (typeof window.fbq === "function") {
         window.fbq("trackCustom", name);
+        // 메타 타겟 규칙은 타겟당 조건 5개 제한이라, 6개 버튼을 하나로 묶는
+        // 공통 이벤트를 함께 전송한다 (리타겟팅 = book_action 포함,
+        // 이탈고객 = book_action 제외로 단순화하기 위함).
+        window.fbq("trackCustom", "book_action");
       }
     };
     document.addEventListener("click", onClick);
