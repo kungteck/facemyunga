@@ -118,7 +118,7 @@ export function NaverMap() {
           target="_blank"
           rel="noopener noreferrer"
           className="mt-2.5 inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary-hover transition-colors"
-          data-track="naver-map-btn"
+          data-track="naver_map_btn"
         >
           <Navigation className="h-4 w-4" /> 네이버 지도 길찾기
         </a>

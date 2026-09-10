@@ -125,7 +125,7 @@ export function ContactForm() {
         type="submit"
         disabled={status === "submitting"}
         className="btn-primary w-full disabled:opacity-70 disabled:cursor-not-allowed"
-        data-track="email-book-btn"
+        data-track="email_book_btn"
       >
         {status === "submitting" ? (
           <>

@@ -99,7 +99,7 @@ export default function Home() {
             <a
               href="#contact"
               className="btn-pill-primary hidden sm:inline-flex"
-              data-track="navi-book-btn"
+              data-track="navi_book_btn"
             >
               예약 상담
             </a>
@@ -194,7 +194,7 @@ export default function Home() {
 
               {/* CTAs */}
               <div className="order-6 lg:order-none lg:mt-8 flex flex-wrap gap-3">
-                <a href="#contact" className="btn-primary" data-track="mainbanner-book-btn">
+                <a href="#contact" className="btn-primary" data-track="mainbanner_book_btn">
                   <Calendar className="h-4 w-4 mr-2" /> 예약 상담
                 </a>
                 <a href="#treatments" className="btn-secondary">
@@ -577,7 +577,7 @@ export default function Home() {
                 <a
                   href={`tel:${contact.phone1}`}
                   className="btn-primary w-full"
-                  data-track="call-book-btn"
+                  data-track="call_book_btn"
                 >
                   <Phone className="h-4 w-4 mr-2" /> 전화로 예약하기
                 </a>
@@ -586,7 +586,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-kakao w-full"
-                  data-track="kakao-book-btn"
+                  data-track="kakao_book_btn"
                 >
                   <MessageCircle className="h-4 w-4" /> 카카오톡 상담
                 </a>
