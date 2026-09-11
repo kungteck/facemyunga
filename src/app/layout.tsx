@@ -32,6 +32,18 @@ const ANALYTICS_BOOTSTRAP = `
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '363904750985008');
   fbq('track', 'PageView');
+
+  // 유입 매체 태깅(메타 전용, 페이지 로드당 1회).
+  // 메타 픽셀은 도메인 뒤 URL 을 전송하지 않고 utm 값도 'other' 로 정규화하므로
+  // (2026-09-11 실측), UTM 기반 맞춤 타겟을 만들려면 전용 이벤트가 필요하다.
+  // GA4 는 utm_source 를 자체 수집하므로 여기서 보내지 않는다.
+  try {
+    var utmSource = new URLSearchParams(location.search).get('utm_source');
+    utmSource = utmSource ? utmSource.toLowerCase() : '';
+    if (utmSource === 'karrot' || utmSource === 'daangn' || utmSource === 'danggeun') {
+      fbq('trackCustom', 'from_karrot');
+    }
+  } catch (e) {}
 })();
 `;
 
