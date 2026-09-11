@@ -24,14 +24,16 @@ export function AnalyticsEvents() {
       if (!el) return;
       const name = el.getAttribute("data-track");
       if (!name) return;
+      // 클릭 1회당 개별 이벤트 1건 + 합계 이벤트 book_action 1건을 보낸다.
+      // 메타: 타겟 규칙이 타겟당 조건 5개 제한이라 6개 버튼을 하나로 묶어야 함.
+      // GA4: 유입 매체별 "예약 행동 총합"을 단일 지표로 보기 위함. book_action 은
+      //      주요 이벤트로 등록하지 않아야 전환 수가 이중 집계되지 않는다.
       if (typeof window.gtag === "function") {
         window.gtag("event", name);
+        window.gtag("event", "book_action");
       }
       if (typeof window.fbq === "function") {
         window.fbq("trackCustom", name);
-        // 메타 타겟 규칙은 타겟당 조건 5개 제한이라, 6개 버튼을 하나로 묶는
-        // 공통 이벤트를 함께 전송한다 (리타겟팅 = book_action 포함,
-        // 이탈고객 = book_action 제외로 단순화하기 위함).
         window.fbq("trackCustom", "book_action");
       }
     };
