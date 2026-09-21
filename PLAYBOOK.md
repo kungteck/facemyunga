@@ -180,7 +180,7 @@ npx wrangler pages project create <PROJECT> --production-branch=main
 | `BeforeAfterSlider.tsx` | 시술 전/후 드래그 비교 | **face-anchor 시스템** — 사진별 얼굴 위치 `y/h/zoom` 입력하면 자동 정렬 |
 | `MobileMenu.tsx` | 모바일 햄버거 드로어 | 슬라이드 인 + 백드롭 + ESC + 스크롤 잠금 |
 | `BackToTop.tsx` | 스크롤 후 상단 이동 버튼 | 400px 스크롤 후 페이드인 |
-| `ContactForm.tsx` | 간편 문의 폼 | Web3Forms 연동, honeypot 스팸 방지, 성공/실패 상태 UI |
+| `ContactForm.tsx` | 간편 문의 폼 | Web3Forms 연동, honeypot 스팸 방지, 성공/실패 상태 UI. **facemyunga 에서는 2026-09 제거됨 — git 이력에서 복구** |
 
 새 프로젝트 시작 시 이 4개는 **복붙해서 시작**한다.
 
@@ -258,9 +258,22 @@ section[id] { scroll-margin-top: 80px; }
 
 ### 폼 → 이메일 (Web3Forms)
 - 키 발급: https://web3forms.com/ (이메일 인증 1회)
-- 무료 1,000건/월
+- 무료 250건/월 (이메일 발송만. 웹훅·SMS·연동은 유료 Pro 부터)
 - `ContactForm.tsx` 가 이미 연동 코드 포함 — 환경변수만 채우면 됨
 - 받는 곳: Gmail (`fynestainc@gmail.com` 또는 클라이언트 이메일)
+
+### 대안: 폼 대신 메신저 버튼 (facemyunga 가 택한 방식)
+사장님이 이메일을 잘 안 보는 업종이면 폼보다 메신저가 낫다. facemyunga 는 폼을
+제거하고 전화·카카오톡·네이버 톡톡 3버튼으로 갔다.
+
+- 네이버 톡톡: 파트너센터에서 상담 링크 발급 → `site.json` 에 URL 만 넣으면 끝.
+  버튼색 `#2DB400`, 카카오 옐로처럼 브랜드 고정색이라 hover 는 opacity 로.
+- **트레이드오프: 톡톡은 고객이 네이버 로그인을 해야 대화가 시작된다.** 폼은 로그인이
+  필요 없으므로 문의 장벽은 폼 < 메신저. 전화·카카오톡 버튼을 함께 남길 것.
+- 톡톡 챗봇 API 는 "고객이 먼저 말을 건 뒤" 응답하는 구조(userId 가 그때 생성)라,
+  폼 제출을 사장님 톡톡으로 알려주는 용도로는 쓸 수 없다.
+- 국내 SMS 는 영구 무료가 없다(건당 8원 수준, 발신번호 사전등록 필요 — 010 번호는
+  본인인증만으로 가능). 무료로 즉시 알림만 원하면 메일 앱 푸시가 가장 싸다.
 - 모바일에서 Gmail 앱 푸시 켜두면 = SMS와 체감 동일
 
 ### 폼 → SMS (※ 한국은 무료 불가)

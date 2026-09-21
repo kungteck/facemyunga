@@ -66,16 +66,17 @@ git push origin main   # → GitHub Actions → Cloudflare Pages
 - 배포 URL: `https://facemyunga.pages.dev` (커스텀 도메인 연결 시 해당 도메인)
 - 로컬 수동 배포: `npm run deploy` (wrangler, `npx wrangler login` 1회 필요)
 - 필요한 GitHub Secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
-  (문의 폼 연동 시 `NEXT_PUBLIC_WEB3FORMS_KEY` 추가)
 
-## 미완성 / 예정 (placeholder)
+## 문의 창구 (2026-09 기준)
 
-- [ ] **ContactForm** — 간편 문의 폼(Web3Forms 연동). 현재 `page.tsx` 의 폼은 정적 placeholder로 **미작동**. 향후 작성 예정
-- [ ] 카카오톡 채널 URL — 현재 모든 링크가 `#kakao` placeholder
-- [ ] 네이버 지도 임베드 — 현재 placeholder 박스
-- [ ] 사업자등록번호 (footer)
-- [ ] OG 이미지(1200×630) / favicon
-- [ ] 커스텀 도메인 연결
+간편 문의 폼(Web3Forms)은 **제거**했고, 예약 상담 카드의 버튼 3개로 대체했다.
+
+- 전화 (`tel:`) · 카카오톡 오픈채팅 · 네이버 톡톡
+- 톡톡 URL 은 `src/content/site.json` 의 `contact.naverTalkUrl` — `/admin` 에서 수정 가능
+- 폼 컴포넌트가 다시 필요하면 git 이력의 `src/components/ContactForm.tsx` 에서 복구
+
+> 참고: 네이버 톡톡은 고객이 네이버 로그인을 해야 대화가 시작된다. 로그인을 꺼리는
+> 고객을 위해 전화·카카오톡 버튼을 함께 남겨둔 구성이다.
 
 ---
 
