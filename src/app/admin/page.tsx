@@ -181,6 +181,7 @@ export default function AdminPage() {
           <Field label="운영시간" value={contact.hours} onChange={(v) => update((d) => { d.contact.hours = v; })} />
           <Field label="사업자등록번호" value={contact.bizNo} onChange={(v) => update((d) => { d.contact.bizNo = v; })} />
           <Field label="카카오 오픈채팅 URL" value={contact.kakaoUrl} onChange={(v) => update((d) => { d.contact.kakaoUrl = v; })} />
+          <Field label="네이버 톡톡 URL" value={contact.naverTalkUrl} onChange={(v) => update((d) => { d.contact.naverTalkUrl = v; })} />
         </Section>
 
         {/* 히어로 */}

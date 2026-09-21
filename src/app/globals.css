@@ -41,6 +41,7 @@
 
   --color-kakao-yellow: #FEE500;
   --color-kakao-ink: #191919;
+  --color-naver-green: #2DB400;
 
   /* ===== Radius ===== */
   --radius-xs: 4px;
@@ -106,6 +107,11 @@
   }
   .btn-kakao {
     @apply inline-flex items-center justify-center gap-2 bg-kakao-yellow text-kakao-ink font-semibold rounded-[8px] px-6 h-[52px] text-base transition-opacity hover:opacity-90;
+  }
+  /* 네이버 톡톡 브랜드 그린. 카카오 옐로와 같이 고정 브랜드색이라
+     틴트 대신 opacity 로만 hover 를 준다(DESIGN.md). */
+  .btn-naver {
+    @apply inline-flex items-center justify-center gap-2 bg-naver-green text-on-primary font-semibold rounded-[8px] px-6 h-[52px] text-base transition-opacity hover:opacity-90;
   }
   .btn-pill-primary {
     @apply inline-flex items-center justify-center bg-primary text-on-primary font-semibold rounded-full px-6 py-3 text-sm transition-colors hover:bg-primary-hover;

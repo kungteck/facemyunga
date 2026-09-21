@@ -3,6 +3,7 @@ import Link from "next/link";
 import {
   Phone,
   MessageCircle,
+  MessageSquareText,
   Calendar,
   Star,
   MapPin,
@@ -17,7 +18,6 @@ import {
 } from "@/components/BeforeAfterSlider";
 import { BackToTop } from "@/components/BackToTop";
 import { MobileMenu } from "@/components/MobileMenu";
-import { ContactForm } from "@/components/ContactForm";
 import { NaverMap } from "@/components/NaverMap";
 import { PromoModal } from "@/components/PromoModal";
 import { VideoCarousel } from "@/components/VideoCarousel";
@@ -571,7 +571,7 @@ export default function Home() {
             <aside className="bg-surface-card rounded-[20px] p-7 border border-hairline lg:sticky lg:top-[88px]">
               <h3 className="text-[20px] font-semibold tracking-tight">예약 상담</h3>
               <p className="mt-1 text-sm text-muted">
-                전화 또는 카카오톡으로 빠른 상담이 가능합니다.
+                전화, 카카오톡, 네이버 톡톡으로 빠른 상담이 가능합니다.
               </p>
               <div className="mt-6 space-y-3">
                 <a
@@ -590,10 +590,15 @@ export default function Home() {
                 >
                   <MessageCircle className="h-4 w-4" /> 카카오톡 상담
                 </a>
-              </div>
-              <div className="mt-7 pt-6 border-t border-hairline">
-                <p className="text-xs text-muted">간편 문의 폼</p>
-                <ContactForm />
+                <a
+                  href={contact.naverTalkUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-naver w-full"
+                  data-track="navertalk_book_btn"
+                >
+                  <MessageSquareText className="h-4 w-4" /> 네이버 톡톡 문의하기
+                </a>
               </div>
             </aside>
           </div>
